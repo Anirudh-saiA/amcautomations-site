@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>amc.automations | YouTube for experts</title>
+<meta name="description" content="Your long videos edited and 30 Shorts cut from them every month, scheduled and uploaded. All you do is record.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#FAF7F2;--surface:#FFFFFF;--surface-2:#F3EEE6;--line:#E4DCCF;--line-strong:#D3C7B4;
+  --ink:#1E1C18;--ink-2:#4A453D;--muted:#7A7264;--clay:#C05F38;--clay-soft:#F2E2D9;--clay-ink:#8E4224;
+  --radius:14px;--maxw:1560px;color-scheme:light;
+  --f-display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --f-body:"Source Sans 3",system-ui,-apple-system,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.02em;line-height:1.05}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:clamp(16px,4vw,64px)}
+.eyebrow{font-family:var(--f-data);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+header.nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:14px clamp(16px,4vw,64px);display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:18px;letter-spacing:-.03em;text-decoration:none}
+.spark{width:20px;height:20px;color:var(--clay)}
+.nav-in .home{margin-left:auto;font-size:15px;color:var(--ink-2);text-decoration:none;padding:8px 16px;border-radius:999px}
+.nav-in .home:hover{background:var(--surface-2)}
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero-art{position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 55% at 80% 15%,color-mix(in srgb,var(--clay) 24%,transparent),transparent 70%),radial-gradient(45% 50% at 10% 85%,color-mix(in srgb,var(--clay) 12%,transparent),transparent 72%)}
+.hero{min-height:calc(100svh - 61px);display:flex;align-items:center}
+.hero .wrap{position:relative;padding-block:72px;width:100%}
+.hero h1{font-size:clamp(40px,6.4vw,78px);font-weight:800;max-width:14ch;margin-top:14px}
+.hero h1 em{font-style:normal;color:var(--clay)}
+.lede{font-size:20px;color:var(--ink-2);max-width:56ch;margin:22px 0 32px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:16px;padding:14px 22px;border-radius:999px;text-decoration:none;border:1px solid transparent}
+.btn.primary{background:var(--ink);color:var(--ground)}
+.btn.primary:hover{background:var(--clay)}
+.btn.ghost{border-color:var(--line-strong);color:var(--ink)}
+.btn.ghost:hover{background:var(--surface)}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+section{padding-block:80px;border-bottom:1px solid var(--line)}
+section h2{font-size:clamp(30px,4vw,46px);font-weight:800;margin:12px 0 18px;max-width:20ch}
+.sub{color:var(--ink-2);max-width:60ch;margin:0 0 40px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.card .n{font-family:var(--f-data);font-size:13px;color:var(--clay);font-weight:600}
+.card h3{font-size:22px;margin:10px 0 8px}
+.card p{margin:0;color:var(--ink-2)}
+.big{font-family:var(--f-display);font-size:52px;font-weight:800;color:var(--clay);line-height:1}
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.reel video{width:100%;aspect-ratio:9/16;border-radius:var(--radius);background:#111;display:block;object-fit:cover}
+.reel h3{font-size:19px;margin:14px 0 4px}
+.reel p{margin:0;color:var(--muted);font-size:15px}
+.list{list-style:none;padding:0;margin:0;display:grid;gap:12px;max-width:720px}
+.list li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px}
+.list b{display:block;font-family:var(--f-display);font-size:18px;margin-bottom:2px}
+.final{background:var(--ink);color:var(--ground);border:0}
+.final h2{color:var(--ground)}
+.final .sub{color:#CFC7BA}
+.final .btn.primary{background:var(--clay);color:#fff}
+.final .btn.primary:hover{background:#fff;color:var(--ink)}
+footer{padding:28px 0;color:var(--muted);font-size:14px}
+@media (max-width:820px){.grid3,.reels{grid-template-columns:1fr}.reels{max-width:360px}.wrap{padding-inline:16px}.nav-in{padding-inline:16px}.hero .wrap{padding-block:56px 48px}section{padding-block:56px}}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center}
+.phone{justify-self:center;width:min(300px,100%);aspect-ratio:9/16;border-radius:34px;padding:10px;background:var(--ink);box-shadow:0 30px 60px -20px rgba(30,28,24,.45)}
+.phone video{width:100%;height:100%;object-fit:cover;border-radius:26px;display:block;background:#111}
+@media (max-width:820px){.hero-grid{grid-template-columns:1fr;gap:40px}.phone{width:240px}}
+
+/* page-only */
+.phone{transform:rotate(-4deg)}
+.grid3 .card:nth-child(1){background:linear-gradient(160deg,#C05F38,#8E4224);color:#fff;border:0}
+.grid3 .card:nth-child(2){background:linear-gradient(160deg,#3D4A6B,#1E2740);color:#fff;border:0}
+.grid3 .card:nth-child(3){background:linear-gradient(160deg,#3F7A52,#24492F);color:#fff;border:0}
+.grid3 .card p,.grid3 .card .n{color:rgba(255,255,255,.85)}
+.grid3 .card .big{color:#fff;font-family:var(--f-impact);font-weight:400;font-size:84px}
+.final h2{font-size:clamp(48px,7vw,110px);max-width:none}
+.ytnav{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.ytnav a{font-size:15px;font-weight:500;color:var(--ink-2);text-decoration:none;padding:8px 16px;border-radius:999px}
+.ytnav a:hover{color:var(--ink);background:var(--surface-2)}
+.ytnav a[aria-current="page"]{background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:0 1px 2px rgba(0,0,0,.06)}
+@media (max-width:560px){.ytnav a{padding:6px 10px;font-size:14px}}
+</style>
+<link rel="stylesheet" href="assets/bold.css">
+<link rel="stylesheet" href="assets/nav.css">
+</head>
+<body>
+<div class="topbar">
+  <a class="logo-link" href="index.html" aria-label="AMC Automations home"><img src="assets/logo.png" alt="AMC Automations"></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><i></i><i></i><i></i></button>
+</div>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Menu">
+  <div class="drawer-head"><img src="assets/logo.png" alt="AMC Automations"><button class="drawer-close" aria-label="Close menu">&times;</button></div>
+  <nav class="navlinks"><a data-route="home" href="index.html#home">Home</a><a data-route="systems" href="index.html#systems">Systems</a><a data-route="templates" href="index.html#templates">Agents</a><a data-route="services" href="index.html#services">Done for you</a><a href="youtube.html" aria-current="page">YouTube</a></nav>
+  <a class="book" href="https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20saw%20amc.automations%20and%20want%20to%20book%20a%20call" target="_blank" rel="noopener">Book a call on WhatsApp</a>
+  <p class="drawer-note">A person approves every email before it goes out.</p>
+</aside>
+
+<div class="hero"><div class="scroll-cue">Scroll<i></i></div><div class="hero-art"></div><div class="wrap"><div class="hero-grid"><div>
+  <span class="eyebrow">YouTube for experts</span>
+  <h1><span class="ln">You record.</span><br><span class="ln"><em>We do the rest.</em></span></h1>
+  <p class="lede">For advisers, realtors, doctors and other experts who already make long videos. Every month your long videos are edited and cut into Shorts, then scheduled and uploaded for you.</p>
+  <div class="ctas">
+    <a class="btn primary" href="mailto:atharvabhutada169@gmail.com?subject=Free%20Short&body=Hi%20Atharva%2C%20here%27s%20my%20channel%3A%20">Get one free Short</a>
+    <a class="btn ghost" href="#work">See the work</a>
+  </div>
+</div>
+<div class="phone"><video src="assets/reel-gastro.mp4" poster="assets/reel-gastro.jpg" autoplay muted loop playsinline></video></div>
+</div></div></div>
+
+<section><div class="wrap">
+<div class="sec-num"><span class="no">01</span><div><span class="eyebrow">Every month</span><h2>What you get.</h2></div></div>
+  <div class="grid3">
+    <div class="card"><div class="big">5</div><h3>Long videos edited</h3><p>Cuts, pacing, captions and on-screen visuals, ready to publish.</p></div>
+    <div class="card"><div class="big">30</div><h3>Shorts</h3><p>Cut from your long videos, each one pointing viewers back to the full video.</p></div>
+    <div class="card"><div class="big">0</div><h3>Uploads by you</h3><p>Titles, descriptions, scheduling and uploading are handled for you.</p></div>
+  </div>
+</div></section>
+
+<section id="work"><div class="wrap">
+<div class="sec-num"><span class="no">02</span><div><span class="eyebrow">Recent work</span><h2>The work.</h2></div></div>
+  <p class="sub">Each one was cut from a single long video: strongest moment first, captions, explainer visuals and a call to action at the end.</p>
+  <div class="reels">
+    <div class="reel"><video src="assets/reel-fertility.mp4" poster="assets/reel-fertility.jpg" controls preload="none" playsinline></video><h3>Fertility clinic</h3><p>Captions, explainer visuals, call button at the end.</p></div>
+    <div class="reel"><video src="assets/reel-gastro.mp4" poster="assets/reel-gastro.jpg" controls preload="none" playsinline></video><h3>Gastro clinic</h3><p>Speaker kept in frame from start to finish.</p></div>
+    <div class="reel"><video src="assets/reel-aesthetics.mp4" poster="assets/reel-aesthetics.jpg" controls preload="none" playsinline></video><h3>Aesthetics clinic</h3><p>Hook first, then the explanation.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+<div class="sec-num"><span class="no">03</span><div><span class="eyebrow">How it works</span><h2>Three steps.</h2></div></div>
+  <div class="grid3">
+    <div class="card"><div class="n">01</div><h3>Free Short first</h3><p>Send your channel. You get one Short from one of your videos within 24 hours, free.</p></div>
+    <div class="card"><div class="n">02</div><h3>Send your recordings</h3><p>Drop raw videos in a shared folder. No new video this week? Shorts come from your older ones.</p></div>
+    <div class="card"><div class="n">03</div><h3>Approve and it goes live</h3><p>You see everything before it posts. Then it is scheduled and uploaded.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+<div class="sec-num"><span class="no">04</span><div><span class="eyebrow">Questions</span><h2>Asked often.</h2></div></div>
+  <ul class="list">
+    <li><b>Do I have to change how I record?</b>No. Keep recording the way you do now.</li>
+    <li><b>Who owns the videos?</b>You do. Everything is posted on your channel.</li>
+    <li><b>Can I approve before anything goes live?</b>Yes. Nothing is posted without your OK.</li>
+    <li><b>What if I don't record a new video one month?</b>Shorts are cut from your older videos, so your channel keeps posting.</li>
+  </ul>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2>See it on your own channel first</h2>
+  <p class="sub">Send your channel link. You get one finished Short from one of your videos within 24 hours, free.</p>
+  <a class="btn primary" href="mailto:atharvabhutada169@gmail.com?subject=Free%20Short&body=Hi%20Atharva%2C%20here%27s%20my%20channel%3A%20">Get one free Short</a>
+</div></section>
+
+<footer><div class="wrap">amc.automations · Atharva Bhutada · <a href="mailto:atharvabhutada169@gmail.com">atharvabhutada169@gmail.com</a></div></footer>
+
+<style id="reveal-css">
+.js-reveal .sr{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.js-reveal .sr.sr-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js-reveal .sr{opacity:1;transform:none;transition:none}}
+</style>
+<script>
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  document.documentElement.classList.add('js-reveal');
+  function arm(){
+    var sel='.wrap>*,.sec-head,.svc-step,.kpi,.stat2,.card,.reel,.sys,.proof,.list li,.mail,.phone,.hero h1,.lede,.ctas';
+    var els=[].slice.call(document.querySelectorAll(sel));
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('sr-in');io.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el,i){
+      if(el.tagName==='SECTION'||el.classList.contains('wrap')||el.querySelector('.wrap,section'))return;
+      if(el.parentElement&&el.parentElement.closest('.sr'))return;
+      el.classList.add('sr');
+      var sib=el.parentElement?[].indexOf.call(el.parentElement.children,el):0;
+      el.style.transitionDelay=Math.min(sib,5)*70+'ms';
+      io.observe(el);
+    });
+    function chk(){els.forEach(function(el){if(el.classList.contains('sr-in'))return;var r=el.getBoundingClientRect();if(r.height&&r.top<innerHeight*.92&&r.bottom>0)el.classList.add('sr-in');});}
+    var tk=false;addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;chk()})}},{passive:true});addEventListener('resize',chk);addEventListener('hashchange',function(){setTimeout(chk,60)});setTimeout(chk,50);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',arm);else arm();
+})();
+</script>
+<script src="assets/bold.js"></script>
+<script src="assets/nav.js"></script>
+</body>
+</html>
