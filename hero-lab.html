@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AMC hero lab: amusement park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* AMC palette v1 */
+:root{
+  --black-1:#E6E4DF; --black-2:#A6A29A; --black-3:#1E1C18; --black-4:#3A3732; --black-5:#0E0D0B;
+  --beige-1:#FFFFFF; --beige-2:#FAF7F2; --beige-3:#F0E9DD; --beige-4:#DDD2C0; --beige-5:#B9AB92;
+  --blue-1:#E4EDFE;  --blue-2:#A5C0FA;  --blue-3:#3B74EE;  --blue-4:#2559C9;  --blue-5:#163A8A;
+  --orange-1:#FDEBDD;--orange-2:#F8B98A;--orange-3:#EE7A2E;--orange-4:#CC5F1A;--orange-5:#8A3D0E;
+  --green-1:#E3F4EA; --green-2:#9ADBB4; --green-3:#1F9D57; --green-4:#17803F; --green-5:#0E5229;
+  --f-display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --f-body:"Source Sans 3",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--beige-2);color:var(--black-3);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+
+/* floating pill nav */
+.nav{position:fixed;z-index:20;top:14px;left:50%;transform:translateX(-50%);width:min(1180px,calc(100% - 28px));
+  display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 10px 8px 20px;
+  background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-radius:999px;box-shadow:0 6px 24px rgba(14,13,11,.12)}
+.brand{font-family:var(--f-display);font-weight:800;font-size:19px;letter-spacing:-.03em;color:var(--black-3);text-decoration:none}
+.brand small{font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;margin-left:8px;color:var(--black-4)}
+.nav a.link{color:var(--black-3);text-decoration:none;font-weight:600;font-size:15px;padding:8px 12px}
+.nav .links{display:flex;gap:4px}
+@media(max-width:720px){.nav .links{display:none}}
+
+.btn{display:inline-flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:13px 24px;font:700 16px var(--f-display);cursor:pointer;text-decoration:none;
+  transition:background .18s,transform .18s,box-shadow .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn.blue{background:var(--blue-3);color:#fff}.btn.blue:hover{background:var(--blue-4)}.btn.blue:active{background:var(--blue-5)}
+.btn.wa{background:var(--green-4);color:#fff}.btn.wa:hover{background:var(--green-5)}
+.btn.ghost{background:rgba(255,255,255,.14);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)}
+.btn.ghost:hover{background:rgba(255,255,255,.26)}
+.btn svg{width:18px;height:18px}
+
+/* hero */
+.hero{position:relative;height:max(100svh,720px);max-height:980px;overflow:hidden;background:var(--green-5)}
+.scene{position:absolute;inset:0;width:100%;height:100%;display:block;will-change:transform}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;pointer-events:none;
+  background:linear-gradient(to top,var(--green-5) 0%,rgba(14,82,41,.92) 38%,rgba(14,82,41,0) 100%)}
+.copy{position:absolute;z-index:3;left:0;right:0;bottom:0;max-width:1180px;margin:0 auto;padding:0 24px 64px;
+  display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:end;color:#fff}
+.copy h1{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(46px,7.4vw,98px);line-height:.98;letter-spacing:-.04em}
+.copy h1 .ln{display:block}
+.copy h1 .hl{color:var(--orange-2)}
+.copy p{margin:0 0 22px;font-size:clamp(18px,1.7vw,23px);line-height:1.35;font-family:var(--f-display);font-weight:500}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:860px){
+  .copy{grid-template-columns:1fr;gap:20px;padding-bottom:78px}.copy p{margin-bottom:6px}
+  .hero{background:linear-gradient(to bottom,#A5C0FA 0,#A5C0FA 70px,var(--green-5) 70px)}
+  .scene{inset:auto;top:70px;left:0;width:100%;height:auto;aspect-ratio:1060/900}
+  .hero::after{height:34%}
+}
+
+/* panel that slides over the hero */
+.panel{position:relative;z-index:4;margin-top:-44px;background:var(--beige-2);border-radius:44px 44px 0 0;padding:56px 24px 96px;text-align:center}
+.panel h2{margin:0 0 10px;font-family:var(--f-display);font-weight:700;font-size:clamp(28px,4vw,44px);letter-spacing:-.03em}
+.panel p{margin:0 auto 28px;max-width:56ch;color:var(--black-4)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.chip{padding:10px 18px;border-radius:999px;background:var(--beige-1);border:1px solid var(--beige-4);font-weight:600;transition:background .18s,transform .18s}
+.chip:hover{background:var(--beige-3);transform:translateY(-2px)}
+
+@media (prefers-reduced-motion:reduce){.btn,.chip{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand" href="#">AMC<small>automations</small></a>
+  <nav class="links"><a class="link" href="#">Systems</a><a class="link" href="#">Work</a><a class="link" href="#">Contact</a></nav>
+  <a class="btn blue" href="#">Book a call</a>
+</header>
+
+<section class="hero" id="hero">
+<svg class="scene" id="scene" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" role="img" aria-label="An animated amusement park: balls roll down a roller coaster track into a bucket that counts finished tasks, beside a turning Ferris wheel and floating balloons.">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#A5C0FA"/><stop offset=".55" stop-color="#E4EDFE"/><stop offset="1" stop-color="#FDEBDD"/>
+    </linearGradient>
+    <linearGradient id="hillFront" gradientUnits="userSpaceOnUse" x1="0" y1="640" x2="0" y2="990">
+      <stop offset="0" stop-color="#17803F"/><stop offset="1" stop-color="#0E5229"/>
+    </linearGradient>
+    <linearGradient id="hillMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1F9D57"/><stop offset="1" stop-color="#17803F"/>
+    </linearGradient>
+    <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FDEBDD" stop-opacity=".95"/><stop offset="1" stop-color="#FDEBDD" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1440" height="900" fill="url(#sky)"/>
+  <circle cx="1130" cy="190" r="190" fill="url(#sun)"/>
+
+  <g id="clouds"></g>
+
+<g id="world" transform="translate(0 -96)">
+  <!-- back hill -->
+  <path d="M0 560 C200 495 400 545 620 522 S1100 482 1440 540 V900 H0Z" fill="#9ADBB4"/>
+
+  <!-- balloons -->
+  <g id="balloonA">
+    <ellipse cx="0" cy="0" rx="34" ry="42" fill="#EE7A2E"/>
+    <path d="M-12 -40 C-26 -14 -24 14 -8 38 L8 38 C24 14 26 -14 12 -40Z" fill="#FDEBDD"/>
+    <path d="M0 -42 C-10 -16 -10 16 0 42 C10 16 10 -16 0 -42Z" fill="#3B74EE"/>
+    <path d="M-12 40 L-8 58 M12 40 L8 58" stroke="#8A3D0E" stroke-width="2"/>
+    <rect x="-11" y="58" width="22" height="14" rx="3" fill="#CC5F1A"/>
+  </g>
+  <g id="balloonB">
+    <ellipse cx="0" cy="0" rx="28" ry="35" fill="#3B74EE"/>
+    <path d="M0 -35 C-9 -13 -9 13 0 35 C9 13 9 -13 0 -35Z" fill="#E4EDFE"/>
+    <path d="M-10 34 L-7 50 M10 34 L7 50" stroke="#163A8A" stroke-width="2"/>
+    <rect x="-9" y="50" width="18" height="12" rx="3" fill="#2559C9"/>
+  </g>
+
+  <!-- ferris wheel -->
+  <g id="wheel">
+    <path d="M1275 372 L1205 612 M1275 372 L1345 612" stroke="#8A3D0E" stroke-width="9" stroke-linecap="round"/>
+    <path d="M1226 520 H1324" stroke="#8A3D0E" stroke-width="5" stroke-linecap="round"/>
+    <g id="wheelRot">
+      <circle cx="1275" cy="372" r="108" fill="none" stroke="#CC5F1A" stroke-width="7"/>
+      <circle cx="1275" cy="372" r="72" fill="none" stroke="#F8B98A" stroke-width="3"/>
+      <g id="spokes" stroke="#CC5F1A" stroke-width="3"></g>
+    </g>
+    <g id="gondolas"></g>
+    <circle cx="1275" cy="372" r="14" fill="#FDEBDD" stroke="#8A3D0E" stroke-width="5"/>
+  </g>
+
+  <!-- mid hill -->
+  <path d="M0 640 C220 580 480 622 760 600 S1200 590 1440 630 V900 H0Z" fill="url(#hillMid)"/>
+
+  <!-- coaster supports, track, sign -->
+  <g id="struts" stroke="#8A3D0E" stroke-width="5" stroke-linecap="round"></g>
+  <path id="track" d="M430 330 C505 330 520 470 600 482 C690 496 700 372 785 372 C870 372 875 512 955 518 C1010 522 1000 456 1060 456"
+        fill="none" stroke="#CC5F1A" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M430 330 C505 330 520 470 600 482 C690 496 700 372 785 372 C870 372 875 512 955 518 C1010 522 1000 456 1060 456"
+        fill="none" stroke="#F8B98A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>
+
+  <!-- balls drawn in JS -->
+  <g id="balls"></g>
+
+  <!-- funnel (input) -->
+  <g id="funnel">
+    <path d="M382 200 H478 L446 254 V290 H414 V254Z" fill="#FFFFFF" stroke="#DDD2C0" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M382 200 H478" stroke="#3B74EE" stroke-width="8" stroke-linecap="round"/>
+    <rect x="410" y="204" width="40" height="8" rx="4" fill="#E4EDFE"/>
+  </g>
+
+  <!-- bucket (done) -->
+  <g id="bucket">
+    <rect x="1074" y="575" width="72" height="62" rx="10" fill="#2559C9"/>
+    <rect x="1068" y="568" width="84" height="14" rx="7" fill="#163A8A"/>
+    <text id="doneLabel" x="1110" y="617" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="19" fill="#FFFFFF">DONE 0</text>
+  </g>
+
+  <!-- trees -->
+  <g id="trees">
+    <g transform="translate(305 596)"><rect x="-4" y="-6" width="8" height="40" rx="3" fill="#B9AB92"/><circle cx="0" cy="-26" r="30" fill="#17803F"/><circle cx="-8" cy="-34" r="12" fill="#1F9D57" opacity=".85"/></g>
+    <g transform="translate(205 618)"><rect x="-3" y="-6" width="6" height="30" rx="3" fill="#B9AB92"/><circle cx="0" cy="-22" r="22" fill="#1F9D57"/></g>
+    <g transform="translate(1185 626)"><rect x="-3" y="-6" width="6" height="30" rx="3" fill="#B9AB92"/><circle cx="0" cy="-22" r="22" fill="#17803F"/></g>
+    <g transform="translate(1388 618)"><rect x="-4" y="-6" width="8" height="40" rx="3" fill="#B9AB92"/><circle cx="0" cy="-26" r="30" fill="#17803F"/></g>
+    <g transform="translate(90 612)"><rect x="-4" y="-6" width="8" height="40" rx="3" fill="#B9AB92"/><circle cx="0" cy="-26" r="30" fill="#1F9D57"/></g>
+  </g>
+
+  <!-- front hill -->
+  <path d="M0 720 C300 662 560 702 820 682 S1250 662 1440 702 V1000 H0Z" fill="url(#hillFront)"/>
+</g>
+</svg>
+
+<div class="copy">
+  <h1><span class="ln">Busywork,</span><span class="ln hl">on autopilot.</span></h1>
+  <div>
+    <p>We build the automations your team does by hand: follow-ups, WhatsApp updates, content and outbound.</p>
+    <div class="cta">
+      <a class="btn wa" href="#"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.5-4-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>Book a call on WhatsApp</a>
+      <a class="btn ghost" href="#">See what each system made</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="panel">
+  <h2>Everything your team repeats, handled.</h2>
+  <p>Follow-ups, updates, content and outreach run in the background while your team does the work only people can do.</p>
+  <div class="chips"><span class="chip">Follow-ups</span><span class="chip">WhatsApp updates</span><span class="chip">Video editing</span><span class="chip">Outbound</span><span class="chip">D2C automations</span></div>
+</section>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const NS = 'http://www.w3.org/2000/svg';
+  const mk = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* phones: frame the whole park (funnel to Ferris wheel) instead of cropping the middle */
+  const small = matchMedia('(max-width: 860px)');
+  const fitScene = () => $('scene').setAttribute('viewBox', small.matches ? '360 0 1060 900' : '0 0 1440 900');
+  fitScene(); small.addEventListener('change', fitScene);
+
+  /* ---------- clouds ---------- */
+  const clouds = [
+    {x: 120, y: 120, s: 1.0, v: 9}, {x: 520, y: 70, s: .8, v: 6}, {x: 880, y: 150, s: 1.15, v: 8}, {x: 1260, y: 90, s: .9, v: 7}
+  ].map(c => {
+    const g = mk('g', {}, $('clouds'));
+    [[0,0,46,22],[-34,8,30,16],[36,8,34,17],[8,-14,28,16]].forEach(([x,y,rx,ry]) => mk('ellipse', {cx:x, cy:y, rx, ry, fill:'#FFFFFF', opacity:.92}, g));
+    c.g = g; return c;
+  });
+
+  /* ---------- ferris wheel ---------- */
+  const WX = 1275, WY = 372, WR = 108, N = 8;
+  const spokes = $('spokes');
+  for (let i = 0; i < N; i++) {
+    const a = i * Math.PI / N * 2;
+    mk('line', {x1: WX, y1: WY, x2: WX + WR * Math.cos(a), y2: WY + WR * Math.sin(a)}, spokes);
+  }
+  const gcol = ['#3B74EE', '#EE7A2E', '#1F9D57', '#FFFFFF'];
+  const gondolas = [];
+  for (let i = 0; i < N; i++) {
+    const g = mk('g', {}, $('gondolas'));
+    mk('path', {d: 'M-8 0 L-9 14 M8 0 L9 14', stroke: '#8A3D0E', 'stroke-width': 2}, g);
+    mk('rect', {x: -13, y: 12, width: 26, height: 17, rx: 5, fill: gcol[i % 4], stroke: '#8A3D0E', 'stroke-width': 2}, g);
+    gondolas.push(g);
+  }
+
+  /* ---------- track, struts ---------- */
+  const track = $('track');
+  const L = track.getTotalLength();
+  for (let d = 30; d < L - 10; d += 42) {
+    const p = track.getPointAtLength(d);
+    mk('line', {x1: p.x, y1: p.y + 6, x2: p.x, y2: 650}, $('struts'));
+  }
+
+  /* ---------- balls ---------- */
+  const palette = [
+    {f: '#3B74EE', s: '#163A8A'}, {f: '#EE7A2E', s: '#8A3D0E'}, {f: '#1F9D57', s: '#0E5229'},
+    {f: '#FFFFFF', s: '#B9AB92'}, {f: '#A5C0FA', s: '#2559C9'}, {f: '#F8B98A', s: '#CC5F1A'}
+  ];
+  const START = track.getPointAtLength(0), END = track.getPointAtLength(L);
+  const MOUTH = {x: 1110, y: 574};
+  let done = 0;
+  const balls = palette.map((c, i) => {
+    const g = mk('g', {visibility: 'hidden'}, $('balls'));
+    mk('circle', {r: 14, fill: c.f, stroke: c.s, 'stroke-width': 2.5}, g);
+    mk('ellipse', {cx: -4.5, cy: -5, rx: 4.5, ry: 3, fill: '#fff', opacity: .6}, g);
+    return {g, phase: 'wait', t: i * 1.35 + .3, d: 0, x: 0, y: 0};
+  });
+
+  function setBall(b, x, y, sc) {
+    b.g.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${(sc || 1).toFixed(3)})`);
+  }
+
+  function stepBall(b, dt) {
+    if (b.phase === 'wait') {
+      b.t -= dt;
+      if (b.t <= 0) { b.phase = 'drop'; b.t = 0; setBall(b, START.x, 278); b.g.setAttribute('visibility', 'visible'); }
+      return;
+    }
+    if (b.phase === 'drop') {                  /* falls out of the funnel spout */
+      b.t += dt;
+      const y = 292 + .5 * 1500 * b.t * b.t;
+      if (y >= START.y) { b.phase = 'track'; b.d = 0; setBall(b, START.x, START.y - 14); return; }
+      setBall(b, START.x, y - 14);
+      return;
+    }
+    if (b.phase === 'track') {                 /* rolls: faster downhill, slower uphill */
+      const p1 = track.getPointAtLength(b.d), p2 = track.getPointAtLength(Math.min(L, b.d + 2));
+      const slope = (p2.y - p1.y) / Math.max(1, Math.hypot(p2.x - p1.x, p2.y - p1.y));
+      const v = Math.max(95, Math.min(430, 190 + 330 * slope));
+      b.d += v * dt;
+      if (b.d >= L) { b.phase = 'fly'; b.t = 0; return; }
+      const p = track.getPointAtLength(b.d);
+      setBall(b, p.x, p.y - 14);
+      return;
+    }
+    if (b.phase === 'fly') {                   /* hops off the end into the bucket */
+      b.t += dt / .6;
+      const p = Math.min(1, b.t);
+      const x = END.x + (MOUTH.x - END.x) * p;
+      const y = (END.y - 14) + (MOUTH.y - (END.y - 14)) * p * p - 46 * 4 * p * (1 - p);
+      setBall(b, x, y, 1 - .25 * p);
+      if (b.t >= 1) {
+        b.phase = 'wait'; b.t = 1.6 + Math.random() * 1.4; b.g.setAttribute('visibility', 'hidden');
+        done++; $('doneLabel').textContent = 'DONE ' + done; bump = 1;
+      }
+    }
+  }
+
+  /* ---------- main loop ---------- */
+  const bucket = $('bucket');
+  let bump = 0, last = performance.now(), clock = 0, visible = true;
+  const hero = $('hero'), scene = $('scene');
+
+  function frame(now) {
+    const dt = Math.min(.05, (now - last) / 1000); last = now;
+    if (visible && !document.hidden) {
+      clock += dt;
+      clouds.forEach(c => { c.g.setAttribute('transform', `translate(${((c.x + clock * c.v + 200) % 1840) - 200} ${c.y}) scale(${c.s})`); });
+      $('balloonA').setAttribute('transform', `translate(235 ${(250 + Math.sin(clock * .9) * 16).toFixed(1)}) rotate(${(Math.sin(clock * .7) * 3).toFixed(2)})`);
+      $('balloonB').setAttribute('transform', `translate(640 ${(205 + Math.sin(clock * 1.1 + 1) * 14).toFixed(1)}) rotate(${(Math.sin(clock * .8 + 2) * 3).toFixed(2)})`);
+      const wa = clock * 14;
+      $('wheelRot').setAttribute('transform', `rotate(${wa.toFixed(2)} ${WX} ${WY})`);
+      gondolas.forEach((g, i) => {
+        const a = (wa * Math.PI / 180) + i * Math.PI * 2 / N;
+        g.setAttribute('transform', `translate(${(WX + WR * Math.cos(a)).toFixed(1)} ${(WY + WR * Math.sin(a)).toFixed(1)})`);
+      });
+      balls.forEach(b => stepBall(b, dt));
+      if (bump > 0) { bump = Math.max(0, bump - dt * 4); const k = 1 + .06 * Math.sin(bump * Math.PI); bucket.setAttribute('transform', `translate(1110 637) scale(${k.toFixed(3)}) translate(-1110 -637)`); }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  if (reduce) {
+    /* static scene: place balls on the track, no loops */
+    balls.forEach((b, i) => { const p = track.getPointAtLength(L * (.12 + i * .15)); b.g.setAttribute('visibility', 'visible'); setBall(b, p.x, p.y - 14); });
+    gondolas.forEach((g, i) => { const a = i * Math.PI * 2 / N; g.setAttribute('transform', `translate(${WX + WR * Math.cos(a)} ${WY + WR * Math.sin(a)})`); });
+    $('balloonA').setAttribute('transform', 'translate(235 250)'); $('balloonB').setAttribute('transform', 'translate(640 205)');
+    clouds.forEach(c => c.g.setAttribute('transform', `translate(${c.x} ${c.y}) scale(${c.s})`));
+  } else {
+    new IntersectionObserver(es => { visible = es[0].isIntersecting; }, {threshold: 0}).observe(hero);
+    requestAnimationFrame(frame);
+    /* scroll parallax: the scene drifts slower than the page while the panel slides over it */
+    addEventListener('scroll', () => {
+      const y = Math.min(scrollY, innerHeight);
+      scene.style.transform = `translate3d(0, ${(y * .22).toFixed(1)}px, 0) scale(${(1 + y / innerHeight * .04).toFixed(3)})`;
+    }, {passive: true});
+    /* pointer parallax on desktop */
+    if (matchMedia('(pointer:fine)').matches) {
+      hero.addEventListener('pointermove', e => {
+        const r = hero.getBoundingClientRect(), nx = (e.clientX - r.left) / r.width - .5;
+        $('clouds').style.transform = `translateX(${(nx * -18).toFixed(1)}px)`;
+        $('wheel').style.transform = `translateX(${(nx * 8).toFixed(1)}px)`;
+      });
+    }
+  }
+})();
+</script>
+</body>
+</html>
