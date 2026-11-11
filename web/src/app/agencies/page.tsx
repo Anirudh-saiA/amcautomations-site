@@ -4,7 +4,11 @@ import { CtaBand, PageHead, SectionHead } from '@/components/Ui'
 import { Faq, VideoCard } from '@/components/Widgets'
 import AgencyMotion from '@/components/AgencyMotion'
 
-export const metadata: Metadata = { title: 'For agencies | amc.automations' }
+export const metadata: Metadata = {
+  title: 'AI Content Studio',
+  description: 'For video editing agencies: a long video goes in, finished captioned Shorts come out. Your editors review and deliver, and handle many more clients.',
+  alternates: { canonical: '/agencies' },
+}
 
 const PIPE = [
   { title: 'It listens to the whole video', text: 'The recording is transcribed and scanned start to end, so nothing is missed.', tag: 'Transcribe + scan' },

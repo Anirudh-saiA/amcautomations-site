@@ -93,6 +93,7 @@ export function BriefForm({ kind = 'service-brief', cta = 'Send the brief' }: { 
           business: f.get('business'),
           brief: f.get('brief'),
           contact: f.get('contact'),
+          website: f.get('website'),
           page: typeof window !== 'undefined' ? window.location.pathname : '',
         }),
       })
@@ -104,6 +105,7 @@ export function BriefForm({ kind = 'service-brief', cta = 'Send the brief' }: { 
   }
   return (
     <form className="brief" onSubmit={onSubmit} noValidate aria-busy={state === 'sending'}>
+      <div className="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
       <label>
         Business
         <input name="business" required autoComplete="organization" placeholder="Your company" />

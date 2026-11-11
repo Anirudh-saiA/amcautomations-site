@@ -6,13 +6,35 @@ const SB = process.env.SUPABASE_URL ?? 'https://mwryqqpsjuobeonjfdbx.supabase.co
 const SBK = process.env.SUPABASE_PUBLISHABLE_KEY ?? 'sb_publishable_G0lRP8-CRTcjorNnwDz_Iw_iyY8YTsF'
 const FORMSUBMIT = process.env.FORMSUBMIT_URL ?? 'https://formsubmit.co/ajax/atharva@amcautomations.in'
 
+/* best-effort spam guard: at most 5 submissions per IP per 10 minutes (per server instance) */
+const hits = new Map<string, number[]>()
+function limited(ip: string) {
+  const now = Date.now()
+  const recent = (hits.get(ip) ?? []).filter((t) => now - t < 10 * 60 * 1000)
+  recent.push(now)
+  hits.set(ip, recent)
+  if (hits.size > 5000) hits.clear()
+  return recent.length > 5
+}
+
 export async function POST(req: Request) {
+  /* only accept posts that come from this site */
+  const origin = req.headers.get('origin')
+  const host = req.headers.get('host')
+  if (origin && host && new URL(origin).host !== host) return NextResponse.json({ ok: false }, { status: 403 })
+  const ip = (req.headers.get('x-forwarded-for') ?? 'unknown').split(',')[0].trim()
+  if (limited(ip)) return NextResponse.json({ ok: false }, { status: 429 })
+  const len = Number(req.headers.get('content-length') ?? 0)
+  if (len > 10_000) return NextResponse.json({ ok: false }, { status: 413 })
+
   let data: Record<string, unknown>
   try {
     data = await req.json()
   } catch {
     return NextResponse.json({ ok: false }, { status: 400 })
   }
+  /* hidden field real people never fill: pretend success so bots move on */
+  if (data.website) return NextResponse.json({ ok: true })
   const clean = (v: unknown) => String(v ?? '').slice(0, 2000)
   /* same columns the static site wrote to the `leads` table */
   const row = {

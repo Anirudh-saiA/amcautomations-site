@@ -6,7 +6,11 @@ import { PageHead, SectionHead } from '@/components/Ui'
 import { BriefForm, Faq } from '@/components/Widgets'
 import AgencyMotion from '@/components/AgencyMotion'
 
-export const metadata: Metadata = { title: 'AI Commerce Operations | amc.automations' }
+export const metadata: Metadata = {
+  title: 'AI Commerce Operations',
+  description: 'WhatsApp order updates, COD confirmation, CRM sync and refunds for B2B, D2C and B2C brands, handled by your rules.',
+  alternates: { canonical: '/services' },
+}
 
 /* background video for the header: used automatically once public/assets/clips/services-hero.mp4 exists */
 const HERO_BG = fs.existsSync(path.join(process.cwd(), 'public/assets/clips/services-hero.mp4')) ? 'services-hero' : undefined

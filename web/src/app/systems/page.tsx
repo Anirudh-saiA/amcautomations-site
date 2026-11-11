@@ -4,7 +4,7 @@ import { ALSO_RUNNING, CAROUSEL, LOG, REAL_EMAIL, VIDEO_STYLES } from '@/lib/con
 import { CtaBand, PageHead, SectionHead } from '@/components/Ui'
 import { VideoCard } from '@/components/Widgets'
 
-export const metadata: Metadata = { title: 'Systems | amc.automations' }
+export const metadata: Metadata = { title: 'Systems', robots: { index: false, follow: false } }
 
 function Io({ i, o, l }: { i: string; o: string; l: string }) {
   return (

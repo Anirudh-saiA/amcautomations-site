@@ -4,7 +4,11 @@ import { BUILD_STEPS, SITE } from '@/lib/content'
 import { CtaBand, PageHead, SectionHead } from '@/components/Ui'
 import AgencyMotion from '@/components/AgencyMotion'
 
-export const metadata: Metadata = { title: 'About us | amc.automations' }
+export const metadata: Metadata = {
+  title: 'About us',
+  description: 'amc.automations builds AI content and commerce automations for companies, and hands them over working. Run by Atharva and Anirudh.',
+  alternates: { canonical: '/about' },
+}
 
 const PRODUCTS = [
   { href: '/agencies', tag: 'AI Content Studio', title: 'Long video in. Shorts out.', text: 'For video editing agencies. The system finds the best moments, cuts, captions and reframes them. Your editors review and deliver.' },

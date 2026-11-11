@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { SITE } from '@/lib/content'
 import { PageHead } from '@/components/Ui'
 
-export const metadata: Metadata = { title: 'Privacy | amc.automations' }
+export const metadata: Metadata = { title: 'Privacy', alternates: { canonical: '/privacy' } }
 
 const BLOCKS = [
   { h: 'What we collect', p: 'Only what you send us through the forms on this site: your business name, what you want automated, your email or WhatsApp number, and the link to any video you ask us to turn into shorts.' },
