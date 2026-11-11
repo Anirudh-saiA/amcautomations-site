@@ -3,35 +3,59 @@
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import HeroStage from './HeroStage'
+
+const WORKS_WITH = [
+  { n: 'WhatsApp', f: 'whatsapp' }, { n: 'Claude', f: 'claude' }, { n: 'n8n', f: 'n8n' },
+  { n: 'Shopify', f: 'shopify' }, { n: 'WooCommerce', f: 'woocommerce' }, { n: 'Razorpay', f: 'razorpay' },
+  { n: 'HubSpot', f: 'hubspot' }, { n: 'Zoho', f: 'zoho' }, { n: 'Google Sheets', f: 'googlesheets' }, { n: 'Gmail', f: 'gmail' },
+]
 
 export default function Hero() {
   const root = useRef<HTMLElement>(null)
+  const vid = useRef<HTMLVideoElement>(null)
 
+  /* the looping city video behind the hero: phones get the lighter file, it pauses when off screen,
+     and reduced motion keeps the still poster */
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const v = vid.current
+    if (!v || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    v.src = window.innerWidth <= 700 ? '/assets/clips/hero-bg-540.mp4' : '/assets/clips/hero-bg.mp4'
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause() }, { threshold: 0.05 })
+    io.observe(v)
+    return () => io.disconnect()
+  }, [])
+
+  /* slow, smooth intro on every load: the city fades up, then the words arrive one after another */
+  useEffect(() => {
+    const el = root.current
+    if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.classList.remove('hero-pre'); vid.current?.classList.add('on'); return
+    }
     const ctx = gsap.context(() => {
-      gsap.from('.hero-kicker', { y: 16, opacity: 0, duration: 0.7, ease: 'power3.out' })
-      gsap.from('.hero-h1 .ln-in', { yPercent: 110, duration: 1.1, ease: 'power4.out', stagger: 0.14, delay: 0.1 })
-      gsap.from('.hero-side > *', { y: 26, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.12, delay: 0.5 })
-      gsap.to('.blob.a', { y: -22, x: 12, duration: 5, ease: 'sine.inOut', yoyo: true, repeat: -1 })
-      gsap.to('.blob.b', { y: 18, x: -14, duration: 6.5, ease: 'sine.inOut', yoyo: true, repeat: -1 })
-      gsap.to('.blob.c', { y: -14, x: -10, duration: 5.5, ease: 'sine.inOut', yoyo: true, repeat: -1 })
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+      tl.fromTo('.hero-video', { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: 2.6, ease: 'power2.out' }, 0)
+        .from('.hero-h1 .ln-in', { yPercent: 118, opacity: 0, duration: 1.9, ease: 'power4.out', stagger: 0.32 }, 0.9)
+        .from('.hero-side p', { y: 28, opacity: 0, duration: 1.5 }, 2.0)
+        .from('.hero-side .cta', { y: 28, opacity: 0, duration: 1.4 }, 2.4)
+        .from('.scroll-cue', { opacity: 0, duration: 1.2 }, 3.0)
+      el.classList.remove('hero-pre') /* gsap has now applied the start state, so the CSS hold can go */
     }, root)
     return () => ctx.revert()
   }, [])
 
   return (
-    <section className="hero" ref={root} id="top">
+    <section className="hero hero-pre" ref={root} id="top">
+      <video ref={vid} className="hero-video" poster="/assets/clips/hero-bg-poster.jpg" muted loop playsInline preload="auto" aria-hidden="true" tabIndex={-1} />
+      <div className="hero-veil" aria-hidden="true" />
       <div className="hero-in">
         <div className="hero-copy">
-          <p className="hero-kicker">AI agents, automations and outbound</p>
           <h1 className="hero-h1">
             <span className="ln"><span className="ln-in">Busywork,</span></span>
             <span className="ln hl"><span className="ln-in">on autopilot.</span></span>
           </h1>
           <div className="hero-side">
-            <p>We build the automations your team does by hand: follow-ups, WhatsApp updates, content and outbound.</p>
+            <p>We build the automations your team does by hand: WhatsApp updates, CRM sync, refunds and content.</p>
             <div className="cta">
               <a className="btn wa" href="https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20saw%20amc.automations%20and%20want%20to%20book%20a%20call" target="_blank" rel="noopener noreferrer">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -44,11 +68,17 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="stage-wrap">
-          <i className="blob a" aria-hidden="true" />
-          <i className="blob b" aria-hidden="true" />
-          <i className="blob c" aria-hidden="true" />
-          <HeroStage />
+      </div>
+      <div className="works" aria-label="Works with">
+        <span className="works-label">Works with</span>
+        <div className="works-track" aria-hidden="false">
+          {[0, 1].map((k) => (
+            <ul key={k} aria-hidden={k === 1}>
+              {WORKS_WITH.map((w) => (
+                <li key={w.f}><i style={{ ['--logo' as string]: `url(/assets/logos/${w.f}.svg)` }} /><span>{w.n}</span></li>
+              ))}
+            </ul>
+          ))}
         </div>
       </div>
       <a className="scroll-cue" href="#glance" aria-label="Scroll to the next section"><span /></a>

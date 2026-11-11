@@ -2,17 +2,26 @@ import type { Metadata } from 'next'
 import { AGENCY, SITE, VIDEO_STYLES } from '@/lib/content'
 import { CtaBand, PageHead, SectionHead } from '@/components/Ui'
 import { Faq, VideoCard } from '@/components/Widgets'
+import AgencyMotion from '@/components/AgencyMotion'
 
 export const metadata: Metadata = { title: 'For agencies | amc.automations' }
+
+const PIPE = [
+  { title: 'It listens to the whole video', text: 'The recording is transcribed and scanned start to end, so nothing is missed.', tag: 'Transcribe + scan' },
+  { title: 'It picks the best moments', text: 'Hooks, stories and tips are scored. The strongest ones open as Shorts, not a slow intro.', tag: 'Hook · Story · Tip' },
+  { title: 'It cuts and finishes each one', text: 'Reframed to vertical, captioned, with visuals and a call to action added.', tag: '9:16 · Captions · CTA' },
+  { title: 'Your editor reviews', text: 'Checks every Short, tweaks what needs it and sends it under your name.', tag: 'Human approval' },
+]
 
 export default function Agencies() {
   return (
     <>
+      <AgencyMotion />
       <PageHead
         tone="green"
-        eyebrow="For video editing agencies"
+        bg="agencies-hero"
         title={<>More clients. <em>Same editors.</em></>}
-        lead="An editing system that runs on your own machine. A long video goes in, finished Shorts come out. Your editors set the creative direction, review, and deliver. One editor can handle many more clients without a new hire."
+        lead="A long video goes in, finished Shorts come out. Your editors set the direction and approve. One editor handles many more clients."
       >
         <a className="btn blue" href={SITE.whatsapp} target="_blank" rel="noopener noreferrer">See it on your footage</a>
       </PageHead>
@@ -31,21 +40,21 @@ export default function Agencies() {
       </section>
 
       <section className="sec tint">
-        <SectionHead kicker="Before and after" title="From one recording to a week of posts." lead="Your client sends one long video. The system marks the moments worth posting and turns each one into a finished vertical Short." />
-        <div className="ba" data-reveal>
-          <div className="ba-long"><b>Long video</b><i style={{ ['--a' as string]: '12%' }} /><i style={{ ['--a' as string]: '33%' }} /><i style={{ ['--a' as string]: '57%' }} /><i style={{ ['--a' as string]: '81%' }} /><small>Moments picked by the system</small></div>
-          <span className="ba-arrow" aria-hidden="true">→</span>
-          <div className="ba-shorts">
-            {VIDEO_STYLES.slice(0, 4).map((v) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={v.id} src={`/assets/sample-${v.id}.jpg`} alt={`${v.title} short`} loading="lazy" />
-            ))}
-          </div>
-        </div>
+        <SectionHead kicker="How it works" title="What happens to your video." lead="Four automatic steps. A person only steps in at the end." />
+        <ol className="pipe">
+          {PIPE.map((p, i) => (
+            <li key={p.title} data-reveal>
+              <i aria-hidden="true">{i + 1}</i>
+              <h3>{p.title}</h3>
+              <p>{p.text}</p>
+              <small>{p.tag}</small>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section className="sec">
-        <SectionHead kicker="Workflow" title="Your editors stay in charge." lead="The only human input is creative direction. The repetitive cutting is done by the system." />
+        <SectionHead title="Your editors stay in charge." lead="You give direction. The system does the cutting." />
         <ol className="flow">
           {AGENCY.flow.map((s, i) => (
             <li key={s.title} data-reveal className={s.who === 'System' ? 'sys-step' : ''}>
@@ -63,19 +72,6 @@ export default function Agencies() {
         <div className="clips">
           {VIDEO_STYLES.map((v) => <VideoCard key={v.id} id={`sample-${v.id}`} title={v.title} text={v.text.replace('Sample edit', 'Sample')} />)}
         </div>
-      </section>
-
-      <section className="sec">
-        <SectionHead kicker="Who it is for" title="Built for small editing teams." />
-        <div className="trio">
-          {AGENCY.forWho.map((f) => (
-            <article className="tcard plain" key={f.title} data-reveal>
-              <h3>{f.title}</h3>
-              <p>{f.text}</p>
-            </article>
-          ))}
-        </div>
-        <p className="notfor" data-reveal><b>Not for:</b> {AGENCY.notFor}</p>
       </section>
 
       <section className="sec tint">

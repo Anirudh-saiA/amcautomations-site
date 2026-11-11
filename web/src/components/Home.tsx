@@ -21,7 +21,7 @@ export default function Home() {
             <p data-reveal>One line is enough. You get a reply within a day on whether it can be automated and how.</p>
             <div className="talk-links" data-reveal>
               <a className="btn wa" href={SITE.whatsapp} target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>
-              <a className="talk-mail" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+              {SITE.emails.map((m) => <a key={m} className="talk-mail" href={`mailto:${m}`}>{m}</a>)}
             </div>
           </div>
           <div className="talk-form" data-reveal>

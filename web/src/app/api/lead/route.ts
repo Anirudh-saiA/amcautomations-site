@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
    The Supabase key below is the publishable (browser-safe) key already used by the static site. */
 const SB = process.env.SUPABASE_URL ?? 'https://mwryqqpsjuobeonjfdbx.supabase.co'
 const SBK = process.env.SUPABASE_PUBLISHABLE_KEY ?? 'sb_publishable_G0lRP8-CRTcjorNnwDz_Iw_iyY8YTsF'
-const FORMSUBMIT = process.env.FORMSUBMIT_URL ?? 'https://formsubmit.co/ajax/atharva@apterno.com'
+const FORMSUBMIT = process.env.FORMSUBMIT_URL ?? 'https://formsubmit.co/ajax/atharva@amcautomations.in'
 
 export async function POST(req: Request) {
   let data: Record<string, unknown>
@@ -33,7 +33,7 @@ export async function POST(req: Request) {
   const mail = fetch(FORMSUBMIT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({ _subject: 'amc.automations: sv', _template: 'table', _captcha: 'false', ...row }),
+    body: JSON.stringify({ _subject: 'amc.automations: sv', _template: 'table', _captcha: 'false', _cc: 'anirudh@amcautomations.in', ...row }),
   }).then((r) => r.ok).catch(() => false)
 
   const [a, b] = await Promise.all([sb, mail])

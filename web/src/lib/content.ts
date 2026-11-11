@@ -3,22 +3,17 @@
 export const SITE = {
   name: 'amc.automations',
   person: 'Atharva Bhutada',
-  email: 'atharvabhutada169@gmail.com',
+  email: 'atharva@amcautomations.in',
+  emails: ['atharva@amcautomations.in', 'anirudh@amcautomations.in'],
   whatsapp: 'https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20saw%20amc.automations%20and%20want%20to%20book%20a%20call',
-  approval: 'A person approves every email before it goes out.',
+  approval: 'A person approves what goes out.',
 }
 
 export const NAV = [
   { href: '/', label: 'Home' },
-  { href: '/services', label: 'Done for you' },
-  { href: '/systems', label: 'Systems' },
-  { href: '/agencies', label: 'For agencies' },
-]
-
-/* the three products, shown first in the menu; they jump to their section on the home page */
-export const NAV_BUILD = [
-  { href: '/#video', label: 'AI Content Studio' },
-  { href: '/#d2c', label: 'AI Commerce Operations' },
+  { href: '/agencies', label: 'AI Content Studio' },
+  { href: '/services', label: 'AI Commerce Operations' },
+  { href: '/about', label: 'About' },
 ]
 
 /* ---------- home ---------- */

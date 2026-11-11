@@ -5,14 +5,10 @@ import { usePathname } from 'next/navigation'
 import { Fragment, useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { NAV, NAV_BUILD, SITE } from '@/lib/content'
+import { NAV, SITE } from '@/lib/content'
 
-/* the menu: Home, then the three products (they jump to their home-page section), then the rest */
-const MENU: { href: string; label: string; sub?: string }[] = [
-  NAV[0],
-  ...NAV_BUILD.map((n, i) => (i === 0 ? { ...n, sub: 'What we build' } : n)),
-  ...NAV.slice(1).map((n, i) => (i === 0 ? { ...n, sub: 'Explore' } : n)),
-]
+/* the menu: one flat list. AI Content Studio opens For agencies, AI Commerce Operations opens Done for you */
+const MENU: { href: string; label: string }[] = NAV
 
 /* floating pill nav with a mobile sheet */
 export function Nav() {
@@ -47,11 +43,11 @@ export function Nav() {
       es.forEach((e) => (e.isIntersecting ? dark.add(e.target) : dark.delete(e.target)))
       el.classList.toggle('inv', dark.size > 0)
     }, { rootMargin: '0px 0px -92% 0px' })
-    const watch = () => document.querySelectorAll('.sp-half, .footer').forEach((n) => io.observe(n))
+    const watch = () => document.querySelectorAll('.sp-half, .footer, .phead-video').forEach((n) => io.observe(n))
     watch()
-    const again = window.setTimeout(watch, 800)
-    return () => { ctx.revert(); io.disconnect(); window.clearTimeout(again) }
-  }, [])
+    const again = window.setTimeout(watch, 800); const again2 = window.setTimeout(watch, 2000)
+    return () => { ctx.revert(); io.disconnect(); window.clearTimeout(again); window.clearTimeout(again2) }
+  }, [path])
 
   /* while the menu is open: Escape closes it and the page behind does not scroll */
   useEffect(() => {
@@ -105,7 +101,6 @@ export function Nav() {
         <span className="sheet-label">Menu</span>
         {MENU.map((n, i) => (
           <Fragment key={n.href}>
-            {n.sub && <span className="sheet-sub">{n.sub}</span>}
             <Link href={n.href} style={{ ['--i' as string]: i }} className={path === n.href ? 'on' : ''} aria-current={path === n.href ? 'page' : undefined} onClick={() => setOpen(false)}>
               <small>0{i + 1}</small>{n.label}
             </Link>
@@ -127,16 +122,15 @@ export function Footer() {
         </div>
         <nav aria-label="Footer">
           <span className="footer-h">Explore</span>
-          {[NAV[0], ...NAV_BUILD, ...NAV.slice(1)].map((n) => <Link key={n.href} href={n.href}>{n.label}</Link>)}
+          {NAV.map((n) => <Link key={n.href} href={n.href}>{n.label}</Link>)}
         </nav>
         <nav aria-label="Company">
           <span className="footer-h">Company</span>
-          <Link href="/about">About us</Link>
           <Link href="/privacy">Privacy</Link>
         </nav>
         <div className="footer-contact">
           <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer">Book a call on WhatsApp</a>
-          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+          {SITE.emails.map((m) => <a key={m} href={`mailto:${m}`}>{m}</a>)}
           <span>{SITE.name} · {SITE.person}</span>
         </div>
       </div>

@@ -2,27 +2,27 @@ import Link from 'next/link'
 import { SITE } from '@/lib/content'
 
 /* compact page header used by every inner page: tinted hero block with a big title */
+import PageVideo from './PageVideo'
+
 export function PageHead({
-  eyebrow, title, lead, tone = 'blue', children,
-}: { eyebrow: string; title: React.ReactNode; lead: string; tone?: 'blue' | 'orange' | 'green'; children?: React.ReactNode }) {
+  title, lead, tone = 'blue', bg, children,
+}: { eyebrow?: string; title: React.ReactNode; lead: string; tone?: 'blue' | 'orange' | 'green'; bg?: string; children?: React.ReactNode }) {
   return (
-    <section className={`phead ${tone}`}>
+    <section className={`phead ${tone}${bg ? ' has-video' : ''}`}>
+      {bg && <PageVideo name={bg} />}
       <div className="phead-in">
-        <span className="eyebrow" data-reveal>{eyebrow}</span>
-        <h1 data-reveal>{title}</h1>
-        <p className="lead" data-reveal>{lead}</p>
-        {children && <div className="cta-row" data-reveal>{children}</div>}
+        <h1 className="ph-in" style={{ ['--d' as string]: '0.1s' }}>{title}</h1>
+        <p className="lead ph-in" style={{ ['--d' as string]: '0.45s' }}>{lead}</p>
+        {children && <div className="cta-row ph-in" style={{ ['--d' as string]: '0.75s' }}>{children}</div>}
       </div>
-      <i className="blob b1" aria-hidden="true" />
-      <i className="blob b2" aria-hidden="true" />
     </section>
   )
 }
 
-export function SectionHead({ kicker, title, lead }: { kicker: string; title: React.ReactNode; lead?: string }) {
+export function SectionHead({ kicker, title, lead }: { kicker?: string; title: React.ReactNode; lead?: string }) {
   return (
     <header className="shead">
-      <span className="kicker" data-reveal>{kicker}</span>
+      {kicker && <span className="kicker" data-reveal>{kicker}</span>}
       <h2 data-reveal>{title}</h2>
       {lead && <p data-reveal>{lead}</p>}
     </header>

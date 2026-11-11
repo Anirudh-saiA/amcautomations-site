@@ -12,7 +12,7 @@ export const viewport: Viewport = { width: 'device-width', initialScale: 1, view
 
 export const metadata: Metadata = {
   title: 'amc.automations | AI agents and automations for companies',
-  description: 'We build the automations your team does by hand: follow-ups, WhatsApp updates, content and outbound.',
+  description: 'We build the automations your team does by hand: WhatsApp updates, CRM sync, refunds and content.',
 }
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
