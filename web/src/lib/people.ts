@@ -4,7 +4,7 @@ export type Person = { slug: string; name: string; role: string; email: string; 
 
 export const PEOPLE: Person[] = [
   { slug: 'atharva', name: 'Atharva Bhutada', role: 'Founder', email: 'atharva@amcautomations.in', phone: '917075969025' },
-  { slug: 'anirudh', name: 'Anirudh', role: 'Founder', email: 'anirudh@amcautomations.in' },
+  { slug: 'anirudh', name: 'Anirudh', role: 'Founder', email: 'anirudh@amcautomations.in', phone: '918341705946' },
 ]
 
 export const personBySlug = (slug: string) => PEOPLE.find((p) => p.slug === slug)

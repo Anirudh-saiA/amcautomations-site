@@ -6,7 +6,7 @@ import { writeFileSync } from 'node:fs'
 const BASE = 'https://amcautomations.in'
 const people = [
   { slug: 'atharva', name: 'Atharva Bhutada', role: 'Founder', email: 'atharva@amcautomations.in', phone: '+91 70759 69025' },
-  { slug: 'anirudh', name: 'Anirudh', role: 'Founder', email: 'anirudh@amcautomations.in', phone: '' },
+  { slug: 'anirudh', name: 'Anirudh', role: 'Founder', email: 'anirudh@amcautomations.in', phone: '+91 83417 05946' },
 ]
 
 const qr = (slug) => QRCode.toString(`${BASE}/card/${slug}`, { type: 'svg', margin: 0, color: { dark: '#1E1C18', light: '#00000000' }, errorCorrectionLevel: 'M' })
