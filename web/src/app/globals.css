@@ -359,7 +359,7 @@ html.js [data-reveal] { opacity: 0; }
 }
 
 
-/* =====================================================================
+/* =======================================================
    Floating nav (no bar): AMC centred at the top, hamburger in the corner
    ===================================================================== */
 .nav {
@@ -373,7 +373,7 @@ html.js [data-reveal] { opacity: 0; }
 .brand-pill { padding: 9px 28px; font-size: 22px; letter-spacing: -0.03em; border-radius: 999px; line-height: 1.2; }
 .burger, .sheet-close, .scene-loader { border-radius: 999px; }
 
-/* =====================================================================
+/* =======================================================
    Liquid glass: frosted, refractive-looking surfaces in palette colours only
    ===================================================================== */
 .burger, .sheet-close {
@@ -418,7 +418,7 @@ html.js [data-reveal] { opacity: 0; }
 .sheet-close:hover { background: linear-gradient(135deg, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.14)); }
 .sheet a:not(.btn) { border-bottom-color: rgba(255, 255, 255, 0.16); }
 
-/* =====================================================================
+/* =======================================================
    Scene loading state: shown instantly while the 3D scene builds
    ===================================================================== */
 .scene-loader {
@@ -436,7 +436,7 @@ html.js [data-reveal] { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .scene-loader i { animation: none; } }
 
 
-/* =====================================================================
+/* =======================================================
    Minimal pass: plain AMC logo, one iOS-style glass hamburger, everything else flat
    ===================================================================== */
 /* header scrolls away with the page; only the hamburger stays */
@@ -496,7 +496,7 @@ html.js [data-reveal] { opacity: 0; }
 .scene-loader { background: none; -webkit-backdrop-filter: none; backdrop-filter: none; border: 0; box-shadow: none; color: #fff; padding: 0; }
 
 
-/* =====================================================================
+/* =======================================================
    Smooth scrolling over the 3D hero: no blend modes, no moving the live canvas
    ===================================================================== */
 .scene-wrap { will-change: auto; }
@@ -507,7 +507,7 @@ html.js [data-reveal] { opacity: 0; }
 .scene-loader { color: var(--black-3); top: 36%; }
 
 
-/* =====================================================================
+/* =======================================================
    UX pass (ui-ux-pro-max): focus, contrast, targets, forms, motion. Palette colours only.
    ===================================================================== */
 html { scroll-padding-top: 24px; }
@@ -566,7 +566,7 @@ main:focus { outline: none; }
 }
 
 
-/* =====================================================================
+/* =======================================================
    Hero v2: no 3D. A looping "lead in, booked call out" stage + pinned scroll story.
    Palette colours only.
    ===================================================================== */
@@ -675,7 +675,7 @@ main:focus { outline: none; }
 .bento.one { grid-template-columns: 1fr; max-width: 640px; margin: 0 auto; } .bento.one .bcard { grid-column: auto; }
 
 
-/* =====================================================================
+/* =======================================================
    Hero v3: video-style looping scene, connections, contact. Palette colours only.
    ===================================================================== */
 .vid { position: relative; z-index: 1; background: var(--beige-2); border: 2px solid var(--black-3); border-radius: 30px; box-shadow: 8px 10px 0 var(--black-3); overflow: hidden; }
@@ -728,7 +728,7 @@ main:focus { outline: none; }
 @media (max-width: 860px) { .vid { box-shadow: 5px 6px 0 var(--black-3); } .vid-cap { font-size: 13px; } }
 
 
-/* =====================================================================
+/* =======================================================
    Menu motion v2: transform/opacity only, one easing curve, no blur on moving layers.
    ===================================================================== */
 :root { --ease-out: cubic-bezier(0.32, 0.72, 0, 1); }
@@ -779,7 +779,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; heig
 .sheet-label { top: 30px; }
 
 
-/* =====================================================================
+/* =======================================================
    Home v4: stack, split-reveal video, D2C and outreach windows, legal pages. Palette only.
    ===================================================================== */
 
@@ -949,7 +949,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; heig
 
 
 
-/* =====================================================================
+/* =======================================================
    Phones: type, touch targets, spacing, iOS quirks
    ===================================================================== */
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
@@ -1064,7 +1064,7 @@ body { -webkit-tap-highlight-color: transparent; overflow-x: clip; }
 /* the header must not create a containing block, or the fixed hamburger and AMC mark would scroll away with it */
 .nav { -webkit-backdrop-filter: none; backdrop-filter: none; background: none; border: 0; box-shadow: none; transform: none; filter: none; }
 
-/* =====================================================================
+/* =======================================================
    PRO: calm product-dashboard look. Inter type, hairline borders, small radii, soft shadow, colour as status
    ===================================================================== */
 :root {
@@ -1496,3 +1496,22 @@ html.lenis, html.lenis body { height: auto; }
 .brand-pill { transition: color .22s ease; }
 /* logo inside the stack chips: a single-colour mask in the chip's ink */
 .tech i s { width: 22px; height: 22px; display: block; background: var(--black-3); -webkit-mask: var(--logo) center / contain no-repeat; mask: var(--logo) center / contain no-repeat; }
+
+/* DIGITAL CARD (/card/...): phone-first, quiet */
+.dcard { min-height: 100svh; display: grid; place-items: center; padding: 96px 20px 56px; background: var(--beige-2); }
+.dcard-in { width: 100%; max-width: 400px; background: #fff; border: 1px solid var(--beige-4); border-radius: 20px; padding: 32px 28px 28px; box-shadow: 0 24px 50px -34px rgba(14, 13, 11, .45); }
+.dcard-brand { font: 800 20px var(--f-display); letter-spacing: -0.03em; color: var(--black-3); }
+.dcard-brand small { font: 500 10px var(--f-mono); letter-spacing: .2em; text-transform: uppercase; color: var(--black-4); margin-left: 8px; }
+.dcard h1 { font: 700 30px/1.1 var(--f-display); letter-spacing: -0.03em; margin: 28px 0 6px; }
+.dcard-role { font: 500 11px var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--blue-4); margin: 0 0 14px; }
+.dcard-line { font-size: 15px; line-height: 1.5; color: var(--black-4); margin: 0 0 22px; }
+.dcard-save { display: flex; justify-content: center; width: 100%; margin-bottom: 18px; }
+.dcard-links { list-style: none; margin: 0 0 22px; padding: 0; border-top: 1px solid var(--beige-4); }
+.dcard-links a { display: flex; justify-content: space-between; gap: 16px; padding: 14px 2px; border-bottom: 1px solid var(--beige-4); text-decoration: none; color: var(--black-3); font-size: 15px; }
+.dcard-links b { font: 500 11px var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--black-4); align-self: center; }
+.dcard-links span { font-weight: 500; text-align: right; word-break: break-all; }
+.dcard-links a:hover span { color: var(--blue-4); }
+.dcard-qr { display: grid; justify-items: center; gap: 8px; }
+.dcard-qr div { width: 148px; height: 148px; }
+.dcard-qr svg { width: 100%; height: 100%; display: block; }
+.dcard-qr small { font: 500 10px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--black-4); }

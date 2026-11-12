@@ -150,7 +150,7 @@ export function Footer() {
         <div className="footer-contact">
           <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer">Book a call on WhatsApp</a>
           {SITE.emails.map((m) => <a key={m} href={`mailto:${m}`}>{m}</a>)}
-          <span>{SITE.name} · {SITE.person}</span>
+          <span>AMC Automations · {SITE.person} and Anirudh</span>
         </div>
       </div>
     </footer>

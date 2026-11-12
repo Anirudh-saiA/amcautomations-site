@@ -4,40 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AMC Automations business cards</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* Palette v1 only. Standard card: 90 x 55 mm. Print at 100% scale, no margins, background graphics ON. */
-  :root {
-    --black-3: #1E1C18; --black-4: #3A3732; --black-2: #A6A29A;
-    --beige-1: #FFFFFF; --beige-2: #FAF7F2; --beige-4: #DDD2C0;
-    --blue-3: #3B74EE; --blue-4: #2559C9;
-    --orange-3: #EE7A2E;
-  }
+  /* Palette v1 only. Card size 90 x 55 mm. Print at 100% scale, margins none, background graphics on. */
+  :root { --ink: #1E1C18; --ink-2: #3A3732; --mute: #A6A29A; --paper: #FFFFFF; --line: #DDD2C0; --blue: #2559C9; }
   * { box-sizing: border-box; margin: 0; }
-  body { font-family: 'Inter', system-ui, sans-serif; background: #e9e6e0; color: var(--black-3); padding: 24px; }
-  h1 { font: 700 18px 'Inter Tight', sans-serif; margin-bottom: 4px; }
-  .note { font-size: 13px; color: var(--black-4); margin-bottom: 20px; max-width: 70ch; line-height: 1.5; }
-  .sheet { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 26px; }
-  .card { width: 90mm; height: 55mm; position: relative; overflow: hidden; border-radius: 3mm; box-shadow: 0 10px 30px -14px rgba(0,0,0,.4); page-break-inside: avoid; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: #ECE8E1; color: var(--ink); padding: 24px; }
+  h1 { font: 600 18px 'Inter Tight', sans-serif; margin-bottom: 4px; }
+  .note { font-size: 13px; line-height: 1.5; color: var(--ink-2); max-width: 72ch; margin-bottom: 22px; }
+  .label { font: 500 11px 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 8px; }
+  .sheet { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 28px; }
+  .card { width: 90mm; height: 55mm; position: relative; overflow: hidden; border-radius: 2mm; box-shadow: 0 10px 28px -16px rgba(0,0,0,.45); break-inside: avoid; }
 
-  /* FRONT: dark, brand mark and website */
-  .front { background: var(--black-3); color: var(--beige-1); display: flex; flex-direction: column; justify-content: space-between; padding: 7mm; }
-  .front .mark { font: 800 15pt 'Inter Tight', sans-serif; letter-spacing: -0.03em; }
-  .front .mark small { font: 500 6pt 'JetBrains Mono', monospace; letter-spacing: .2em; text-transform: uppercase; color: var(--black-2); margin-left: 2mm; }
-  .front .tag { font: 800 17pt/1.02 'Inter Tight', sans-serif; letter-spacing: -0.03em; }
-  .front .tag em { font-style: normal; color: var(--blue-3); }
-  .front .foot { font: 500 6.5pt 'JetBrains Mono', monospace; letter-spacing: .06em; color: var(--black-2); display: flex; gap: 3mm; }
-  .front::after { content: ''; position: absolute; right: -9mm; top: -9mm; width: 26mm; height: 26mm; border-radius: 50%; background: var(--blue-4); opacity: .9; }
+  /* FRONT: dark, one wordmark, one line */
+  .front { background: var(--ink); color: var(--paper); padding: 8mm; display: flex; flex-direction: column; justify-content: center; }
+  .word { font: 700 19pt/1 'Inter Tight', sans-serif; letter-spacing: -0.03em; }
+  .word span { display: block; margin-top: 2.2mm; font: 500 6pt 'JetBrains Mono', monospace; letter-spacing: .32em; text-transform: uppercase; color: var(--mute); }
+  .rule { width: 9mm; height: .3mm; background: var(--paper); opacity: .55; margin: 6mm 0 3mm; }
+  .url { font: 400 6.5pt 'JetBrains Mono', monospace; letter-spacing: .08em; color: var(--mute); }
 
-  /* BACK: light, the person */
-  .back { background: var(--beige-2); border: .25mm solid var(--beige-4); padding: 7mm; display: flex; flex-direction: column; justify-content: space-between; }
-  .back .name { font: 800 14pt 'Inter Tight', sans-serif; letter-spacing: -0.02em; }
-  .back .role { font: 500 6.5pt 'JetBrains Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--blue-4); margin-top: 1mm; }
-  .back ul { list-style: none; padding: 0; display: grid; gap: 1.6mm; font-size: 7.5pt; color: var(--black-4); }
-  .back li b { display: inline-block; width: 12mm; font: 500 6pt 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--black-2); }
-  .back .bar { position: absolute; left: 0; top: 0; bottom: 0; width: 2.2mm; background: var(--blue-3); }
-  .back .and { position: absolute; right: 6mm; bottom: 6mm; font: 800 8pt 'Inter Tight', sans-serif; color: var(--orange-3); }
+  /* BACK: white, the person, QR */
+  .back { background: var(--paper); border: .2mm solid var(--line); padding: 8mm; display: flex; flex-direction: column; justify-content: space-between; }
+  .name { font: 600 13pt/1.1 'Inter Tight', sans-serif; letter-spacing: -0.02em; }
+  .role { margin-top: 1.4mm; font: 500 6pt 'JetBrains Mono', monospace; letter-spacing: .18em; text-transform: uppercase; color: var(--blue); }
+  .bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 4mm; }
+  ul { list-style: none; padding: 0; display: grid; gap: 1.2mm; font-size: 7pt; color: var(--ink-2); }
+  .qr { width: 17mm; text-align: center; }
+  .qr svg { width: 17mm; height: 17mm; display: block; }
+  .qr small { display: block; margin-top: 1mm; font: 400 4.5pt 'JetBrains Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
 
   @page { size: 90mm 55mm; margin: 0; }
   @media print {
@@ -46,52 +40,56 @@
     .sheet { display: block; margin: 0; }
     .card { box-shadow: none; border-radius: 0; break-after: page; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
-  .label { font: 500 11px 'JetBrains Mono', monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--black-4); margin: 0 0 8px; }
 </style>
 </head>
 <body>
   <h1>AMC Automations business cards</h1>
-  <p class="note">Edit the names, roles and phone numbers below, then use Print and Save as PDF for your printer (90 x 55 mm, margins none, background graphics on). Replace the "AMC" text with your logo once you have it. Ask your printer for 350 gsm matt, which is the usual premium option.</p>
+  <p class="note">Check the names, roles and phone numbers, then Print and Save as PDF for your printer (90 x 55 mm, margins none, background graphics on). Ask for 350 gsm matt. The QR code opens each person's digital card, where the visitor can save the contact in one tap. Replace the AMC wordmark with your logo once you have it.</p>
 
-  <p class="label">Atharva</p>
+  <p class="label">Atharva Bhutada</p>
   <div class="sheet">
     <div class="card front">
-      <div class="mark">AMC<small>automations</small></div>
-      <div class="tag">Busywork,<br><em>on autopilot.</em></div>
-      <div class="foot"><span>amcautomations.in</span></div>
+      <div class="word">AMC<span>Automations</span></div>
+      <div class="rule"></div>
+      <div class="url">amcautomations.in</div>
     </div>
     <div class="card back">
-      <div class="bar"></div>
-      <div style="padding-left:3mm">
+      <div class="who">
         <div class="name">Atharva Bhutada</div>
-        <div class="role">Founder, AMC Automations</div>
+        <div class="role">Founder</div>
       </div>
-      <ul style="padding-left:3mm">
-        <li><b>Email</b>atharva@amcautomations.in</li>
-        <li><b>WhatsApp</b>+91 70759 69025</li>
-        <li><b>Web</b>amcautomations.in</li>
-      </ul>
+      <div class="bottom">
+        <ul>
+          <li>atharva@amcautomations.in</li>
+          <li>+91 70759 69025</li>
+          <li>amcautomations.in</li>
+        </ul>
+        <div class="qr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" shape-rendering="crispEdges"><path stroke="#1E1C18" d="M0 0.5h7m3 0h2m1 0h1m4 0h1m1 0h1m1 0h7M0 1.5h1m5 0h1m1 0h1m1 0h1m2 0h2m2 0h1m2 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m1 0h1m2 0h2m5 0h2m2 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h2m2 0h2m3 0h1m4 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m2 0h2m5 0h5m1 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m3 0h2m4 0h1m1 0h1m3 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h1m3 0h1m1 0h1m4 0h2M0 8.5h1m5 0h1m1 0h1m6 0h1m1 0h1m1 0h1m1 0h2m2 0h3M1 9.5h2m1 0h2m2 0h4m1 0h3m1 0h3m1 0h1m1 0h2m1 0h2M1 10.5h1m1 0h1m1 0h3m2 0h1m2 0h3m1 0h1m2 0h1m2 0h2M2 11.5h2m3 0h1m2 0h4m4 0h4m2 0h2M2 12.5h10m1 0h1m2 0h1m1 0h1m1 0h1m1 0h2m4 0h1M0 13.5h2m5 0h1m1 0h3m3 0h10m2 0h2M0 14.5h1m1 0h2m1 0h3m7 0h1m1 0h1m2 0h1m2 0h1m1 0h2M1 15.5h1m6 0h2m2 0h1m7 0h1m1 0h1m1 0h1m1 0h1m1 0h1M1 16.5h2m1 0h3m2 0h2m1 0h1m2 0h3m1 0h1m5 0h2M0 17.5h1m3 0h1m2 0h1m1 0h1m1 0h6m1 0h3m1 0h3m1 0h3M0 18.5h3m3 0h2m1 0h4m2 0h1m2 0h3m3 0h2m2 0h1M0 19.5h1m2 0h2m2 0h3m3 0h1m6 0h4M0 20.5h1m4 0h3m6 0h2m1 0h1m2 0h5m1 0h3M8 21.5h5m1 0h2m2 0h3m3 0h2M0 22.5h7m2 0h2m1 0h1m2 0h2m1 0h3m1 0h1m1 0h3M0 23.5h1m5 0h1m3 0h3m1 0h3m2 0h2m3 0h1m3 0h1M0 24.5h1m1 0h3m1 0h1m3 0h2m1 0h2m1 0h1m2 0h7m2 0h1M0 25.5h1m1 0h3m1 0h1m2 0h1m1 0h1m2 0h2m3 0h1m1 0h1m3 0h2m1 0h1M0 26.5h1m1 0h3m1 0h1m3 0h1m1 0h2m1 0h1m1 0h2m2 0h7M0 27.5h1m5 0h1m2 0h1m1 0h2m5 0h1m2 0h1m1 0h4m1 0h1M0 28.5h7m1 0h3m1 0h2m1 0h1m1 0h1m1 0h1m4 0h1m1 0h1"/></svg>
+<small>Scan to save</small></div>
+      </div>
     </div>
   </div>
-
   <p class="label">Anirudh</p>
   <div class="sheet">
     <div class="card front">
-      <div class="mark">AMC<small>automations</small></div>
-      <div class="tag">Busywork,<br><em>on autopilot.</em></div>
-      <div class="foot"><span>amcautomations.in</span></div>
+      <div class="word">AMC<span>Automations</span></div>
+      <div class="rule"></div>
+      <div class="url">amcautomations.in</div>
     </div>
     <div class="card back">
-      <div class="bar"></div>
-      <div style="padding-left:3mm">
+      <div class="who">
         <div class="name">Anirudh</div>
-        <div class="role">Founder, AMC Automations</div>
+        <div class="role">Founder</div>
       </div>
-      <ul style="padding-left:3mm">
-        <li><b>Email</b>anirudh@amcautomations.in</li>
-        <li><b>WhatsApp</b>+91 00000 00000</li>
-        <li><b>Web</b>amcautomations.in</li>
-      </ul>
+      <div class="bottom">
+        <ul>
+          <li>anirudh@amcautomations.in</li>
+          
+          <li>amcautomations.in</li>
+        </ul>
+        <div class="qr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" shape-rendering="crispEdges"><path stroke="#1E1C18" d="M0 0.5h7m1 0h4m1 0h6m1 0h1m1 0h7M0 1.5h1m5 0h1m6 0h1m2 0h2m1 0h1m2 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m2 0h2m1 0h1m2 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h1m1 0h6m2 0h1m1 0h1m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m1 0h1m5 0h5m3 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h1m4 0h2m3 0h3m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h3m5 0h5M0 8.5h1m3 0h1m1 0h4m3 0h2m1 0h2m2 0h6m2 0h1M0 9.5h1m2 0h1m5 0h1m1 0h2m1 0h5m2 0h8M0 10.5h1m1 0h5m2 0h7m2 0h1m1 0h1m1 0h1m5 0h1M5 11.5h1m2 0h2m1 0h1m1 0h1m1 0h3m1 0h2m1 0h2m1 0h1m1 0h2M0 12.5h1m2 0h4m6 0h1m1 0h1m1 0h2m1 0h2m5 0h1M0 13.5h3m2 0h1m1 0h4m1 0h7m2 0h8M3 14.5h5m1 0h1m1 0h1m3 0h2m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1M0 15.5h1m2 0h1m5 0h1m1 0h2m1 0h1m2 0h2m2 0h3m3 0h2M0 16.5h3m1 0h5m1 0h2m1 0h3m1 0h1m2 0h2m5 0h1M0 17.5h1m1 0h1m1 0h2m2 0h1m1 0h2m3 0h2m1 0h1m3 0h4m1 0h2M2 18.5h2m1 0h2m1 0h1m3 0h4m10 0h1m1 0h1M4 19.5h1m2 0h3m3 0h1m1 0h4m1 0h1m3 0h1m2 0h2M0 20.5h3m3 0h1m2 0h1m1 0h3m3 0h1m1 0h7m2 0h1M8 21.5h1m4 0h4m1 0h1m1 0h1m3 0h1m3 0h1M0 22.5h7m1 0h1m1 0h2m3 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1M0 23.5h1m5 0h1m4 0h2m1 0h1m2 0h4m3 0h1m2 0h1M0 24.5h1m1 0h3m1 0h1m1 0h2m3 0h3m1 0h1m1 0h7m1 0h1M0 25.5h1m1 0h3m1 0h1m6 0h1m1 0h1m4 0h2m6 0h1M0 26.5h1m1 0h3m1 0h1m3 0h1m1 0h2m1 0h2m4 0h1m3 0h4M0 27.5h1m5 0h1m2 0h1m1 0h5m1 0h1m2 0h1m4 0h1m1 0h2M0 28.5h7m1 0h2m1 0h1m1 0h1m3 0h1m2 0h2m2 0h2m1 0h1"/></svg>
+<small>Scan to save</small></div>
+      </div>
     </div>
   </div>
 </body>
