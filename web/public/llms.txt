@@ -1,0 +1,25 @@
+# AMC Automations
+
+> AMC Automations (also written amc.automations) builds AI automations for companies and hands them over working. Two products: AI Content Studio for video editing agencies, and AI Commerce Operations for B2B, D2C and B2C brands. Website: https://amcautomations.in
+
+## What we do
+
+- AI Content Studio: for video editing agencies. A long video goes in, finished captioned vertical Shorts come out. The system transcribes the video, finds the strongest moments, cuts, captions and reframes them, and adds a call to action. The agency's editors set the creative direction, review every Short and deliver under the agency's name. It runs on the agency's own computer, so client footage stays in house. Page: https://amcautomations.in/ai-content-studio
+- AI Commerce Operations: WhatsApp order updates, cash-on-delivery (COD) confirmation, CRM setup and sync (HubSpot, Zoho, Google Sheets), refund and return workflows, abandoned cart and re-order reminders, lead qualifying and follow-ups, invoices, quotes and payment reminders, and daily reports. Built around the customer's own tools and rules. Page: https://amcautomations.in/ai-commerce-operations
+
+## Who it is for
+
+- B2B brands: lead qualifying, quotes, invoices, payment reminders.
+- D2C brands: COD confirmation, order updates, abandoned carts, refunds, CRM sync.
+- B2C businesses: support, bookings and reminders on WhatsApp.
+- Video editing agencies (AI Content Studio).
+
+## How we work
+
+Discovery call, design the flow in writing, build and test on real data, then handover. The customer owns the result: it runs on their accounts and keys. A person approves what goes out.
+
+## Contact
+
+- atharva@amcautomations.in
+- anirudh@amcautomations.in
+- About: https://amcautomations.in/about

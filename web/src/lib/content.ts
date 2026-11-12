@@ -11,8 +11,8 @@ export const SITE = {
 
 export const NAV = [
   { href: '/', label: 'Home' },
-  { href: '/agencies', label: 'AI Content Studio' },
-  { href: '/services', label: 'AI Commerce Operations' },
+  { href: '/ai-content-studio', label: 'AI Content Studio' },
+  { href: '/ai-commerce-operations', label: 'AI Commerce Operations' },
   { href: '/about', label: 'About' },
 ]
 

@@ -103,7 +103,7 @@ export default function Systems() {
           ))}
         </div>
         <div className="center" data-reveal>
-          <Link className="btn blue" href="/services#brief">Want one of these? Send the brief</Link>
+          <Link className="btn blue" href="/ai-commerce-operations#brief">Want one of these? Send the brief</Link>
         </div>
       </section>
 

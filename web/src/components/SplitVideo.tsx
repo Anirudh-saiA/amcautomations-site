@@ -19,7 +19,7 @@ export default function SplitVideo() {
           <li>You review and approve each piece</li>
         </ul>
         <div className="sp-actions">
-          <Link className="btn blue" href="/agencies">See how it works</Link>
+          <Link className="btn blue" href="/ai-content-studio">See how it works</Link>
           <a className="btn ghost dark" href="#contact">Send us your video</a>
         </div>
       </div>

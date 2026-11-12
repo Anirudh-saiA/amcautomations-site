@@ -19,7 +19,7 @@ export default function Features() {
             <li>Lead qualifying and reminders, on schedule</li>
           </ul>
           <div className="sp-actions">
-            <Link className="btn blue" href="/services">See how it works</Link>
+            <Link className="btn blue" href="/ai-commerce-operations">See how it works</Link>
             <a className="btn ghost dark" href="#contact">Talk to us</a>
           </div>
         </div>

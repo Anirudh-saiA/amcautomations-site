@@ -5,6 +5,12 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  async redirects() {
+    return [
+      { source: '/agencies', destination: '/ai-content-studio', permanent: true },
+      { source: '/services', destination: '/ai-commerce-operations', permanent: true },
+    ]
+  },
   async headers() {
     return [
       {

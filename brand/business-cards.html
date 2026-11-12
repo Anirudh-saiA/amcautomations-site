@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AMC Automations business cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  /* Palette v1 only. Standard card: 90 x 55 mm. Print at 100% scale, no margins, background graphics ON. */
+  :root {
+    --black-3: #1E1C18; --black-4: #3A3732; --black-2: #A6A29A;
+    --beige-1: #FFFFFF; --beige-2: #FAF7F2; --beige-4: #DDD2C0;
+    --blue-3: #3B74EE; --blue-4: #2559C9;
+    --orange-3: #EE7A2E;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: #e9e6e0; color: var(--black-3); padding: 24px; }
+  h1 { font: 700 18px 'Inter Tight', sans-serif; margin-bottom: 4px; }
+  .note { font-size: 13px; color: var(--black-4); margin-bottom: 20px; max-width: 70ch; line-height: 1.5; }
+  .sheet { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 26px; }
+  .card { width: 90mm; height: 55mm; position: relative; overflow: hidden; border-radius: 3mm; box-shadow: 0 10px 30px -14px rgba(0,0,0,.4); page-break-inside: avoid; }
+
+  /* FRONT: dark, brand mark and website */
+  .front { background: var(--black-3); color: var(--beige-1); display: flex; flex-direction: column; justify-content: space-between; padding: 7mm; }
+  .front .mark { font: 800 15pt 'Inter Tight', sans-serif; letter-spacing: -0.03em; }
+  .front .mark small { font: 500 6pt 'JetBrains Mono', monospace; letter-spacing: .2em; text-transform: uppercase; color: var(--black-2); margin-left: 2mm; }
+  .front .tag { font: 800 17pt/1.02 'Inter Tight', sans-serif; letter-spacing: -0.03em; }
+  .front .tag em { font-style: normal; color: var(--blue-3); }
+  .front .foot { font: 500 6.5pt 'JetBrains Mono', monospace; letter-spacing: .06em; color: var(--black-2); display: flex; gap: 3mm; }
+  .front::after { content: ''; position: absolute; right: -9mm; top: -9mm; width: 26mm; height: 26mm; border-radius: 50%; background: var(--blue-4); opacity: .9; }
+
+  /* BACK: light, the person */
+  .back { background: var(--beige-2); border: .25mm solid var(--beige-4); padding: 7mm; display: flex; flex-direction: column; justify-content: space-between; }
+  .back .name { font: 800 14pt 'Inter Tight', sans-serif; letter-spacing: -0.02em; }
+  .back .role { font: 500 6.5pt 'JetBrains Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--blue-4); margin-top: 1mm; }
+  .back ul { list-style: none; padding: 0; display: grid; gap: 1.6mm; font-size: 7.5pt; color: var(--black-4); }
+  .back li b { display: inline-block; width: 12mm; font: 500 6pt 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--black-2); }
+  .back .bar { position: absolute; left: 0; top: 0; bottom: 0; width: 2.2mm; background: var(--blue-3); }
+  .back .and { position: absolute; right: 6mm; bottom: 6mm; font: 800 8pt 'Inter Tight', sans-serif; color: var(--orange-3); }
+
+  @page { size: 90mm 55mm; margin: 0; }
+  @media print {
+    body { background: none; padding: 0; }
+    h1, .note, .label { display: none; }
+    .sheet { display: block; margin: 0; }
+    .card { box-shadow: none; border-radius: 0; break-after: page; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+  .label { font: 500 11px 'JetBrains Mono', monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--black-4); margin: 0 0 8px; }
+</style>
+</head>
+<body>
+  <h1>AMC Automations business cards</h1>
+  <p class="note">Edit the names, roles and phone numbers below, then use Print and Save as PDF for your printer (90 x 55 mm, margins none, background graphics on). Replace the "AMC" text with your logo once you have it. Ask your printer for 350 gsm matt, which is the usual premium option.</p>
+
+  <p class="label">Atharva</p>
+  <div class="sheet">
+    <div class="card front">
+      <div class="mark">AMC<small>automations</small></div>
+      <div class="tag">Busywork,<br><em>on autopilot.</em></div>
+      <div class="foot"><span>amcautomations.in</span></div>
+    </div>
+    <div class="card back">
+      <div class="bar"></div>
+      <div style="padding-left:3mm">
+        <div class="name">Atharva Bhutada</div>
+        <div class="role">Founder, AMC Automations</div>
+      </div>
+      <ul style="padding-left:3mm">
+        <li><b>Email</b>atharva@amcautomations.in</li>
+        <li><b>WhatsApp</b>+91 70759 69025</li>
+        <li><b>Web</b>amcautomations.in</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="label">Anirudh</p>
+  <div class="sheet">
+    <div class="card front">
+      <div class="mark">AMC<small>automations</small></div>
+      <div class="tag">Busywork,<br><em>on autopilot.</em></div>
+      <div class="foot"><span>amcautomations.in</span></div>
+    </div>
+    <div class="card back">
+      <div class="bar"></div>
+      <div style="padding-left:3mm">
+        <div class="name">Anirudh</div>
+        <div class="role">Founder, AMC Automations</div>
+      </div>
+      <ul style="padding-left:3mm">
+        <li><b>Email</b>anirudh@amcautomations.in</li>
+        <li><b>WhatsApp</b>+91 00000 00000</li>
+        <li><b>Web</b>amcautomations.in</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

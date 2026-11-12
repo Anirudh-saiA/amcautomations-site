@@ -1484,3 +1484,6 @@ html.lenis, html.lenis body { height: auto; }
 .theme-blue .pipe::after { background: var(--blue-3); }
 
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* drop-in logo: put a single-colour SVG at public/brand/logo.svg and it replaces the "AMC" text; it follows the text colour */
+.brand-logo { display: block; width: 70px; height: 24px; background: currentColor; -webkit-mask: url(/brand/logo.svg) center / contain no-repeat; mask: url(/brand/logo.svg) center / contain no-repeat; }

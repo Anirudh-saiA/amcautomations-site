@@ -5,11 +5,12 @@ import { BUILD_STEPS, SERVICES_FAQ, SITE } from '@/lib/content'
 import { PageHead, SectionHead } from '@/components/Ui'
 import { BriefForm, Faq } from '@/components/Widgets'
 import AgencyMotion from '@/components/AgencyMotion'
+import JsonLd, { faqLd, serviceLd } from '@/components/JsonLd'
 
 export const metadata: Metadata = {
   title: 'AI Commerce Operations',
   description: 'WhatsApp order updates, COD confirmation, CRM sync and refunds for B2B, D2C and B2C brands, handled by your rules.',
-  alternates: { canonical: '/services' },
+  alternates: { canonical: '/ai-commerce-operations' },
 }
 
 /* background video for the header: used automatically once public/assets/clips/services-hero.mp4 exists */
@@ -61,6 +62,8 @@ export default function Services() {
   return (
     <div className="theme-orange">
       <AgencyMotion />
+      <JsonLd data={serviceLd('AI Commerce Operations', 'WhatsApp order updates, COD confirmation, CRM sync and refunds for B2B, D2C and B2C brands, handled by your rules.', '/ai-commerce-operations', 'B2B, D2C and B2C brands')} />
+      <JsonLd data={faqLd(SERVICES_FAQ)} />
       <PageHead
         tone="orange"
         bg={HERO_BG}

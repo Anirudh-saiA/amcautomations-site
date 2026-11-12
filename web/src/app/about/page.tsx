@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 }
 
 const PRODUCTS = [
-  { href: '/agencies', tag: 'AI Content Studio', title: 'Long video in. Shorts out.', text: 'For video editing agencies. The system finds the best moments, cuts, captions and reframes them. Your editors review and deliver.' },
-  { href: '/services', tag: 'AI Commerce Operations', title: 'Your store, running on its own.', text: 'For B2B, D2C and B2C brands. Order updates, COD confirmation, CRM sync and refunds, handled on WhatsApp by your rules.' },
+  { href: '/ai-content-studio', tag: 'AI Content Studio', title: 'Long video in. Shorts out.', text: 'For video editing agencies. The system finds the best moments, cuts, captions and reframes them. Your editors review and deliver.' },
+  { href: '/ai-commerce-operations', tag: 'AI Commerce Operations', title: 'Your store, running on its own.', text: 'For B2B, D2C and B2C brands. Order updates, COD confirmation, CRM sync and refunds, handled on WhatsApp by your rules.' },
 ]
 
 const RULES = [

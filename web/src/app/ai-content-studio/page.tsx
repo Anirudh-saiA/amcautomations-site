@@ -2,12 +2,13 @@ import type { Metadata } from 'next'
 import { AGENCY, SITE, VIDEO_STYLES } from '@/lib/content'
 import { CtaBand, PageHead, SectionHead } from '@/components/Ui'
 import { Faq, VideoCard } from '@/components/Widgets'
+import JsonLd, { faqLd, serviceLd } from '@/components/JsonLd'
 import AgencyMotion from '@/components/AgencyMotion'
 
 export const metadata: Metadata = {
   title: 'AI Content Studio',
   description: 'For video editing agencies: a long video goes in, finished captioned Shorts come out. Your editors review and deliver, and handle many more clients.',
-  alternates: { canonical: '/agencies' },
+  alternates: { canonical: '/ai-content-studio' },
 }
 
 const PIPE = [
@@ -20,6 +21,8 @@ const PIPE = [
 export default function Agencies() {
   return (
     <>
+      <JsonLd data={serviceLd('AI Content Studio', 'A long video goes in, finished captioned Shorts come out. Editors review and deliver. For video editing agencies.', '/ai-content-studio', 'Video editing agencies')} />
+      <JsonLd data={faqLd(AGENCY.faq)} />
       <AgencyMotion />
       <PageHead
         tone="green"

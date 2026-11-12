@@ -11,7 +11,7 @@ import { NAV, SITE } from '@/lib/content'
 const MENU: { href: string; label: string }[] = NAV
 
 /* floating pill nav with a mobile sheet */
-export function Nav() {
+export function Nav({ hasLogo = false }: { hasLogo?: boolean }) {
   const path = usePathname()
   const [open, setOpen] = useState(false)
   const burgerRef = useRef<HTMLButtonElement>(null)
@@ -81,7 +81,7 @@ export function Nav() {
       <header className="nav">
         <span aria-hidden="true" />
         <Link ref={brandRef} className="brand brand-pill" href="/" aria-label="AMC automations, home" onClick={() => setOpen(false)}>
-          AMC
+          {hasLogo ? <span className="brand-logo" aria-hidden="true" /> : 'AMC'}
         </Link>
         <div className="nav-right">
           <button
