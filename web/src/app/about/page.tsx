@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { BUILD_STEPS, SITE } from '@/lib/content'
+import { ABOUT_FAQ, BUILD_STEPS, SITE } from '@/lib/content'
+import JsonLd, { BASE_URL, faqLd } from '@/components/JsonLd'
+import { Faq } from '@/components/Widgets'
 import { CtaBand, PageHead, SectionHead } from '@/components/Ui'
 import AgencyMotion from '@/components/AgencyMotion'
 
@@ -24,6 +26,16 @@ const RULES = [
 export default function About() {
   return (
     <div className="theme-blue">
+      <JsonLd data={faqLd(ABOUT_FAQ)} />
+      <JsonLd data={{
+        '@context': 'https://schema.org', '@type': 'AboutPage', url: `${BASE_URL}/about`, name: 'About AMC Automations',
+        about: { '@id': `${BASE_URL}/#org` },
+        mainEntity: { '@id': `${BASE_URL}/#org` },
+      }} />
+      <JsonLd data={[
+        { '@context': 'https://schema.org', '@type': 'Person', name: 'Atharva Bhutada', jobTitle: 'Founder', email: 'atharva@amcautomations.in', worksFor: { '@id': `${BASE_URL}/#org` } },
+        { '@context': 'https://schema.org', '@type': 'Person', name: 'Anirudh', jobTitle: 'Founder', email: 'anirudh@amcautomations.in', worksFor: { '@id': `${BASE_URL}/#org` } },
+      ]} />
       <AgencyMotion />
       <PageHead
         tone="blue"
@@ -70,6 +82,11 @@ export default function About() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="sec">
+        <SectionHead title="Questions we get asked." lead="Short answers about who we are and how we work." />
+        <Faq items={ABOUT_FAQ} />
       </section>
 
       <section className="sec tint">

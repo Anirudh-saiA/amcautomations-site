@@ -144,6 +144,7 @@ export function Footer() {
         </nav>
         <nav aria-label="Company">
           <span className="footer-h">Company</span>
+          <Link href="/contact">Contact</Link>
           <Link href="/privacy">Privacy</Link>
         </nav>
         <div className="footer-contact">

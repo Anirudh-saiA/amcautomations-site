@@ -23,3 +23,9 @@ Discovery call, design the flow in writing, build and test on real data, then ha
 - atharva@amcautomations.in
 - anirudh@amcautomations.in
 - About: https://amcautomations.in/about
+- Contact: https://amcautomations.in/contact
+
+## Quick answers
+
+- AMC stands for AI · Media · Commerce (AMC Automations). It is not related to AMC Theatres or AMC Networks.
+- Founders: Atharva Bhutada and Anirudh. No public street address: AMC Automations works remotely and serves clients in India and abroad.

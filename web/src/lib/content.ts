@@ -208,3 +208,14 @@ export const TECH: { n: string; k: string; tone: string; f?: string }[] = [
   { n: 'Your CRM', k: 'Whichever you use', tone: 'orange' },
   { n: 'Webhooks', k: 'Anything with an API', tone: 'blue' },
 ]
+
+/* ---------- about: questions people (and AI assistants) ask about us ---------- */
+export const ABOUT_FAQ = [
+  { q: 'What is AMC Automations?', a: 'AMC Automations is an AI automation company. We build the work a team does by hand (WhatsApp order updates, CRM sync, refunds and video content) as automations, and hand them over working.' },
+  { q: 'What does AI · Media · Commerce mean?', a: 'It is what we automate. AI is how the work gets done, Media is our AI Content Studio for video editing agencies, and Commerce is our AI Commerce Operations for online stores and service brands.' },
+  { q: 'Who is AMC Automations for?', a: 'Video editing agencies (AI Content Studio) and B2B, D2C and B2C brands that run orders, leads and customer messages through WhatsApp, email and a CRM (AI Commerce Operations).' },
+  { q: 'Who runs AMC Automations?', a: 'The company is run by its two founders, Atharva Bhutada and Anirudh. Each has a direct inbox, and you deal with the people who build your automation.' },
+  { q: 'How does a project start?', a: 'You book a call on WhatsApp or write to us. We tell you whether the work can be automated, design the flow in writing, build and test it on real data, then hand it over.' },
+  { q: 'Do I keep what you build?', a: 'Yes. It runs on your own accounts and keys, so nothing is locked to us. A person on your side approves what goes out.' },
+  { q: 'Where can I reach AMC Automations?', a: 'On WhatsApp, or by email at atharva@amcautomations.in or anirudh@amcautomations.in. The contact page is amcautomations.in/contact.' },
+]
