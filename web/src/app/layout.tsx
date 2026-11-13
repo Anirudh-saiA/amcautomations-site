@@ -19,37 +19,54 @@ const DESC = 'We build the automations your team does by hand: WhatsApp updates,
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: 'AMC Automations | AI content and commerce automation', template: '%s | AMC Automations' },
+  title: { default: 'AMC Automations | AI · Media · Commerce automation', template: '%s | AMC Automations' },
   applicationName: 'AMC Automations',
-  keywords: ['AMC Automations', 'amc.automations', 'AI automation agency', 'WhatsApp order updates', 'COD confirmation', 'CRM automation', 'AI Content Studio', 'AI Commerce Operations'],
+  keywords: ['AMC Automations', 'AMC', 'AI Media Commerce', 'amc.automations', 'AI automation agency', 'WhatsApp order updates', 'COD confirmation', 'CRM automation', 'AI Content Studio', 'AI Commerce Operations'],
   description: DESC,
   alternates: { canonical: '/' },
-  openGraph: { type: 'website', siteName: 'AMC Automations', title: 'AMC Automations | AI content and commerce automation', description: DESC, url: '/', locale: 'en_IN' },
-  twitter: { card: 'summary_large_image', title: 'AMC Automations | AI content and commerce automation', description: DESC },
+  openGraph: { type: 'website', siteName: 'AMC Automations', title: 'AMC Automations | AI · Media · Commerce automation', description: DESC, url: '/', locale: 'en_IN' },
+  twitter: { card: 'summary_large_image', title: 'AMC Automations | AI · Media · Commerce automation', description: DESC },
 }
+
+const PHONE = '+91 70759 69025'
+const LOGO = `${SITE_URL}/assets/amc-logo-512.png`
+/* add the real profile links here as they exist (LinkedIn page, Instagram, YouTube channel, Google Business Profile):
+   they tell Google these pages are the same business, which is what builds the knowledge panel */
+const SAME_AS: string[] = []
 
 const JSON_LD = [
   {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': ['Organization', 'ProfessionalService'],
     '@id': `${SITE_URL}/#org`,
     name: 'AMC Automations',
-    alternateName: ['amc.automations'],
+    legalName: 'AMC Automations',
+    alternateName: ['AMC', 'AMC Automations India', 'amc.automations', 'AI Media Commerce Automations'],
+    slogan: 'AI · Media · Commerce',
     url: SITE_URL,
-    ...(HAS_LOGO ? { logo: `${SITE_URL}/brand/logo.svg` } : {}),
+    logo: { '@type': 'ImageObject', url: LOGO, width: 512, height: 512 },
+    image: LOGO,
     email: 'atharva@amcautomations.in',
+    telephone: PHONE,
     description: 'AMC Automations builds AI automations for companies: an AI Content Studio for video editing agencies, and AI Commerce Operations (WhatsApp order updates, COD confirmation, CRM sync and refunds) for B2B, D2C and B2C brands.',
-    founder: [{ '@type': 'Person', name: 'Atharva' }, { '@type': 'Person', name: 'Anirudh' }],
+    areaServed: [{ '@type': 'Country', name: 'India' }, { '@type': 'Place', name: 'Worldwide (remote)' }],
+    knowsAbout: ['AI automation', 'WhatsApp Business API', 'CRM automation', 'COD order confirmation', 'AI video editing', 'n8n workflows', 'Shopify automation'],
+    founder: [{ '@type': 'Person', name: 'Atharva Bhutada' }, { '@type': 'Person', name: 'Anirudh' }],
     contactPoint: [
-      { '@type': 'ContactPoint', contactType: 'sales', email: 'atharva@amcautomations.in' },
-      { '@type': 'ContactPoint', contactType: 'sales', email: 'anirudh@amcautomations.in' },
+      { '@type': 'ContactPoint', contactType: 'sales', email: 'atharva@amcautomations.in', telephone: PHONE, areaServed: 'IN', availableLanguage: ['English', 'Hindi', 'Telugu'] },
+      { '@type': 'ContactPoint', contactType: 'sales', email: 'anirudh@amcautomations.in', areaServed: 'IN', availableLanguage: ['English', 'Hindi', 'Telugu'] },
     ],
-    makesOffer: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Content Studio', url: `${SITE_URL}/ai-content-studio` } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Commerce Operations', url: `${SITE_URL}/ai-commerce-operations` } },
-    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Services',
+      itemListElement: [
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Content Studio', description: 'One long video in, finished captioned vertical Shorts out, for video editing agencies.', url: `${SITE_URL}/ai-content-studio` } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Commerce Operations', description: 'WhatsApp order updates, COD confirmation, CRM sync, refunds and reminders for B2B, D2C and B2C brands.', url: `${SITE_URL}/ai-commerce-operations` } },
+      ],
+    },
+    ...(SAME_AS.length ? { sameAs: SAME_AS } : {}),
   },
-  { '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${SITE_URL}/#site`, name: 'AMC Automations', alternateName: ['amc.automations'], url: SITE_URL, publisher: { '@id': `${SITE_URL}/#org` } },
+  { '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${SITE_URL}/#site`, name: 'AMC Automations', alternateName: ['AMC', 'amc.automations'], url: SITE_URL, inLanguage: 'en-IN', publisher: { '@id': `${SITE_URL}/#org` } },
 ]
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
