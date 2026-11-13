@@ -27,5 +27,5 @@ Discovery call, design the flow in writing, build and test on real data, then ha
 
 ## Quick answers
 
-- AMC stands for AI · Media · Commerce (AMC Automations). It is not related to AMC Theatres or AMC Networks.
+- AMC stands for AI · Media · Commerce (AMC Automations). It is not related to AMC Theatres, AMC Networks or AMC Pvt Ltd (the industrial machinery manufacturer). AMC Automations is an independent AI automation company at amcautomations.in. Replies to enquiries come within 24 to 48 hours.
 - Founders: Atharva Bhutada and Anirudh. No public street address: AMC Automations works remotely and serves clients in India and abroad.

@@ -145,7 +145,7 @@ export default function Services() {
 
       <section className="sec split" id="brief">
         <div className="split-copy">
-          <SectionHead title="Tell me what eats your week." lead="One line is enough. Reply within a day." />
+          <SectionHead title="Tell me what eats your week." lead="One line is enough. Reply within 24 to 48 hours." />
         </div>
         <div className="split-form" data-reveal>
           <BriefForm />

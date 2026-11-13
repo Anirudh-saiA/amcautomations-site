@@ -18,7 +18,7 @@ export default function Home() {
           <div className="talk-copy">
             <span className="kicker" data-reveal>Connect with us</span>
             <h2 data-reveal>Tell us what should run on its own.</h2>
-            <p data-reveal>One line is enough. You get a reply within a day on whether it can be automated and how.</p>
+            <p data-reveal>One line is enough. You get a reply within 24 to 48 hours on whether it can be automated and how.</p>
             <div className="talk-links" data-reveal>
               <a className="btn wa" href={SITE.whatsapp} target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>
               {SITE.emails.map((m) => <a key={m} className="talk-mail" href={`mailto:${m}`}>{m}</a>)}

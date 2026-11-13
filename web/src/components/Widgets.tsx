@@ -132,7 +132,7 @@ export function BriefForm({ kind = 'service-brief', cta = 'Send the brief' }: { 
       </label>
       <button className="btn orange" disabled={state === 'sending'}>{state === 'sending' ? 'Sending…' : cta}</button>
       <div aria-live="polite">
-        {state === 'ok' && <p className="form-ok">Got it. You will hear back within a day.</p>}
+        {state === 'ok' && <p className="form-ok">Got it. You will hear back within 24 to 48 hours.</p>}
         {state === 'err' && (
           <p className="form-err" role="alert">
             That did not go through. <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a> instead.

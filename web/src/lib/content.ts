@@ -186,7 +186,7 @@ export const STATS = [
   { n: 1200, s: '+', t: 'hours of busywork handed back to teams' },
   { n: 250, s: 'k', t: 'follow-ups and messages sent on autopilot' },
   { n: 48, s: '', t: 'brands running an agent with us' },
-  { n: 24, s: 'h', t: 'to hear back on what can be automated' },
+  { n: 48, s: 'h', t: 'or less to hear back on what can be automated' },
 ]
 
 
@@ -205,8 +205,8 @@ export const TECH: { n: string; k: string; tone: string; f?: string }[] = [
   { n: 'Razorpay', k: 'Payments', tone: 'blue', f: 'razorpay' },
   { n: 'HubSpot', k: 'CRM', tone: 'orange', f: 'hubspot' },
   { n: 'Zoho', k: 'CRM and books', tone: 'orange', f: 'zoho' },
-  { n: 'Your CRM', k: 'Whichever you use', tone: 'orange' },
-  { n: 'Webhooks', k: 'Anything with an API', tone: 'blue' },
+  { n: 'Your CRM', k: 'Whichever you use', tone: 'orange', f: 'crm' },
+  { n: 'Webhooks', k: 'Anything with an API', tone: 'blue', f: 'webhooks' },
 ]
 
 /* ---------- about: questions people (and AI assistants) ask about us ---------- */
@@ -217,5 +217,6 @@ export const ABOUT_FAQ = [
   { q: 'Who runs AMC Automations?', a: 'The company is run by its two founders, Atharva Bhutada and Anirudh. Each has a direct inbox, and you deal with the people who build your automation.' },
   { q: 'How does a project start?', a: 'You book a call on WhatsApp or write to us. We tell you whether the work can be automated, design the flow in writing, build and test it on real data, then hand it over.' },
   { q: 'Do I keep what you build?', a: 'Yes. It runs on your own accounts and keys, so nothing is locked to us. A person on your side approves what goes out.' },
+  { q: 'Is AMC Automations related to AMC Theatres or AMC Pvt Ltd?', a: 'No. AMC Automations (AI · Media · Commerce) is an independent AI automation company with the website amcautomations.in. It is not connected to AMC Theatres, AMC Networks, or AMC Pvt Ltd, the industrial machinery maker.' },
   { q: 'Where can I reach AMC Automations?', a: 'On WhatsApp, or by email at atharva@amcautomations.in or anirudh@amcautomations.in. The contact page is amcautomations.in/contact.' },
 ]

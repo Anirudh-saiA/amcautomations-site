@@ -101,7 +101,7 @@ export default function About() {
         </div>
       </section>
 
-      <CtaBand title="Tell us what should run on its own." text="You get a reply within a day on whether it can be automated and how." />
+      <CtaBand title="Tell us what should run on its own." text="You get a reply within 24 to 48 hours on whether it can be automated and how." />
     </div>
   )
 }
