@@ -191,15 +191,20 @@ export const STATS = [
 
 
 /* ---------- home: technologies we build with ---------- */
-export const TECH = [
-  { n: 'n8n', k: 'Workflow engine', tone: 'orange' },
-  { n: 'Claude Code', k: 'AI builder', tone: 'blue' },
-  { n: 'WhatsApp API', k: "Meta's official API", tone: 'green' },
-  { n: 'Gmail', k: 'Email and follow-ups', tone: 'orange' },
-  { n: 'Google Sheets', k: 'Data and reports', tone: 'green' },
-  { n: 'Google Calendar', k: 'Booking', tone: 'blue' },
-  { n: 'Supabase', k: 'Database', tone: 'green' },
-  { n: 'Next.js', k: 'Web apps', tone: 'blue' },
+export const TECH: { n: string; k: string; tone: string; f?: string }[] = [
+  { n: 'n8n', k: 'Workflow engine', tone: 'orange', f: 'n8n' },
+  { n: 'Claude Code', k: 'AI builder', tone: 'blue', f: 'claude' },
+  { n: 'WhatsApp API', k: "Meta's official API", tone: 'green', f: 'whatsapp' },
+  { n: 'Gmail', k: 'Email and follow-ups', tone: 'orange', f: 'gmail' },
+  { n: 'Google Sheets', k: 'Data and reports', tone: 'green', f: 'googlesheets' },
+  { n: 'Google Calendar', k: 'Booking', tone: 'blue', f: 'googlecalendar' },
+  { n: 'Supabase', k: 'Database', tone: 'green', f: 'supabase' },
+  { n: 'Next.js', k: 'Web apps', tone: 'blue', f: 'nextdotjs' },
+  { n: 'Shopify', k: 'Online stores', tone: 'green', f: 'shopify' },
+  { n: 'WooCommerce', k: 'WordPress stores', tone: 'blue', f: 'woocommerce' },
+  { n: 'Razorpay', k: 'Payments', tone: 'blue', f: 'razorpay' },
+  { n: 'HubSpot', k: 'CRM', tone: 'orange', f: 'hubspot' },
+  { n: 'Zoho', k: 'CRM and books', tone: 'orange', f: 'zoho' },
   { n: 'Your CRM', k: 'Whichever you use', tone: 'orange' },
   { n: 'Webhooks', k: 'Anything with an API', tone: 'blue' },
 ]

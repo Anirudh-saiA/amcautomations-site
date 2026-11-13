@@ -37,16 +37,29 @@ export function Nav({ hasLogo = false }: { hasLogo?: boolean }) {
         })
       }
     })
-    /* white mark while a dark band or the footer sits under the top strip: observed, not hit-tested on every scroll */
-    const dark = new Set<Element>()
-    const io = new IntersectionObserver((es) => {
-      es.forEach((e) => (e.isIntersecting ? dark.add(e.target) : dark.delete(e.target)))
-      el.classList.toggle('inv', dark.size > 0)
-    }, { rootMargin: '0px 0px -92% 0px' })
-    const watch = () => document.querySelectorAll('.sp-half, .footer, .phead-video').forEach((n) => io.observe(n))
-    watch()
-    const again = window.setTimeout(watch, 800); const again2 = window.setTimeout(watch, 2000)
-    return () => { ctx.revert(); io.disconnect(); window.clearTimeout(again); window.clearTimeout(again2) }
+    /* white mark while something dark is really under it: look at what sits at the mark's centre and read its
+       actual background colour (so desktop split bands, mobile bands and the footer all work), once per frame while scrolling */
+    const lum = (c: string) => {
+      const m = c.match(/rgba?\(([^)]+)\)/); if (!m) return null
+      const [r, g, b, a = 1] = m[1].split(/[ ,\/]+/).filter(Boolean).map(Number)
+      return a < 0.6 ? null : (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
+    }
+    const check = () => {
+      const r = el.getBoundingClientRect()
+      let hit = false
+      for (const n of document.elementsFromPoint(r.left + r.width / 2, r.top + r.height / 2)) {
+        if (n === el || el.contains(n)) continue
+        if (n.closest('.phead-video')) { hit = true; break }
+        const l = lum(getComputedStyle(n).backgroundColor)
+        if (l !== null) { hit = l < 0.4; break }
+      }
+      el.classList.toggle('inv', hit)
+    }
+    /* scrubbed scroll animations lag behind the scroll position, so check on every animation frame, not on scroll events */
+    let frame = 0
+    const tick = () => { if (++frame % 2 === 0) check() }
+    gsap.ticker.add(tick)
+    return () => { ctx.revert(); gsap.ticker.remove(tick) }
   }, [path])
 
   /* while the menu is open: Escape closes it and the page behind does not scroll */

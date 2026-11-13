@@ -51,11 +51,11 @@ export default function Hero() {
       <div className="hero-in">
         <div className="hero-copy">
           <h1 className="hero-h1">
-            <span className="ln"><span className="ln-in">Busywork,</span></span>
-            <span className="ln hl"><span className="ln-in">on autopilot.</span></span>
+            <span className="ln"><span className="ln-in">AI · Media ·</span></span>
+            <span className="ln hl"><span className="ln-in">Commerce.</span></span>
           </h1>
           <div className="hero-side">
-            <p>We build the automations your team does by hand: WhatsApp updates, CRM sync, refunds and content.</p>
+            <p>We build the automations your team does by hand.</p>
             <div className="cta">
               <a className="btn wa" href="https://wa.me/917075969025?text=Hi%20Atharva%2C%20I%20saw%20amc.automations%20and%20want%20to%20book%20a%20call" target="_blank" rel="noopener noreferrer">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

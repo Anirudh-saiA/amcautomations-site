@@ -1491,3 +1491,8 @@ html.lenis, html.lenis body { height: auto; }
 /* logo mark beside the AMC wordmark: three dots (AI, Media, Commerce) joined by one line */
 .brand-pill { gap: 0.32em; }
 .brand-mark { width: 1.4em; height: 1.4em; flex: none; display: block; }
+
+/* header mark: colour eases between dark and white, so a switch never snaps */
+.brand-pill { transition: color .22s ease; }
+/* logo inside the stack chips: a single-colour mask in the chip's ink */
+.tech i s { width: 22px; height: 22px; display: block; background: var(--black-3); -webkit-mask: var(--logo) center / contain no-repeat; mask: var(--logo) center / contain no-repeat; }

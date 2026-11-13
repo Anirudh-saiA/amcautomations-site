@@ -8,7 +8,7 @@ export default function Stack() {
       <div className="marq-track">
         {[...items, ...items].map((t, i) => (
           <span className={`tech ${t.tone}`} key={`${t.n}-${i}`} aria-hidden={i >= items.length ? true : undefined}>
-            <i>{t.n.slice(0, 2)}</i>
+            <i>{t.f ? <s style={{ ['--logo' as string]: `url(/assets/logos/${t.f}.svg)` }} /> : t.n.slice(0, 2)}</i>
             <b>{t.n}</b>
             <small>{t.k}</small>
           </span>
@@ -34,8 +34,8 @@ export default function Stack() {
         </div>
       </div>
       <div className="marq" role="list" aria-label="Technologies we use">
-        {row(TECH.slice(0, 5))}
-        {row(TECH.slice(5), true)}
+        {row(TECH.slice(0, 8))}
+        {row(TECH.slice(8), true)}
       </div>
       <Counters />
     </section>
