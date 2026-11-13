@@ -1487,3 +1487,7 @@ html.lenis, html.lenis body { height: auto; }
 
 /* drop-in logo: put a single-colour SVG at public/brand/logo.svg and it replaces the "AMC" text; it follows the text colour */
 .brand-logo { display: block; width: 70px; height: 24px; background: currentColor; -webkit-mask: url(/brand/logo.svg) center / contain no-repeat; mask: url(/brand/logo.svg) center / contain no-repeat; }
+
+/* logo mark beside the AMC wordmark: three dots (AI, Media, Commerce) joined by one line */
+.brand-pill { gap: 0.32em; }
+.brand-mark { width: 1.4em; height: 1.4em; flex: none; display: block; }

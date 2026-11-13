@@ -81,7 +81,12 @@ export function Nav({ hasLogo = false }: { hasLogo?: boolean }) {
       <header className="nav">
         <span aria-hidden="true" />
         <Link ref={brandRef} className="brand brand-pill" href="/" aria-label="AMC automations, home" onClick={() => setOpen(false)}>
-          {hasLogo ? <span className="brand-logo" aria-hidden="true" /> : 'AMC'}
+          {hasLogo ? <span className="brand-logo" aria-hidden="true" /> : (
+            <>
+              <svg className="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M11 47 L32 17 L53 47" fill="none" stroke="currentColor" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round" /><circle cx="11" cy="47" r="9.5" fill="#3B74EE" /><circle cx="32" cy="17" r="9.5" fill="#EE7A2E" /><circle cx="53" cy="47" r="9.5" fill="#1F9D57" /></svg>
+              AMC
+            </>
+          )}
         </Link>
         <div className="nav-right">
           <button
