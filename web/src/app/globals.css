@@ -1533,3 +1533,7 @@ html.lenis, html.lenis body { height: auto; }
 @media (max-width: 640px) { .tech i s { width: 26px; height: 26px; } }
 .tech i s[style*="woocommerce"] { width: 50px; height: 32px; }
 @media (max-width: 640px) { .tech i s[style*="woocommerce"] { width: 44px; height: 28px; } }
+
+/* more tools in the strip: keep the same reading speed */
+.marq-track { animation-duration: 130s; }
+.marq-row.rev .marq-track { animation-duration: 150s; }

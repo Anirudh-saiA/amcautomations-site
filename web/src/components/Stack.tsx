@@ -34,8 +34,8 @@ export default function Stack() {
         </div>
       </div>
       <div className="marq" role="list" aria-label="Technologies we use">
-        {row(TECH.slice(0, 8))}
-        {row(TECH.slice(8), true)}
+        {row(TECH.slice(0, Math.ceil(TECH.length / 2)))}
+        {row(TECH.slice(Math.ceil(TECH.length / 2)), true)}
       </div>
       <Counters />
     </section>
