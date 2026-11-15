@@ -132,7 +132,7 @@ export function Nav({ hasLogo = false }: { hasLogo?: boolean }) {
 
 export function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" data-nosnippet>
       <div className="footer-in">
         <div>
           <div className="brand light">AMC<small>automations</small></div>

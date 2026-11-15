@@ -1385,6 +1385,8 @@ html.lenis, html.lenis body { height: auto; }
 .theme-orange .pipe li.lit i, .theme-orange .pipe li.lit:last-child i { background: var(--orange-3); }
 .theme-orange .pipe::after { background: var(--orange-3); }
 .theme-orange .pipe { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 900px) { .theme-orange .pipe { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .theme-orange .pipe { grid-template-columns: 1fr; } }
 .phead.orange.has-video h1 em { color: var(--orange-2); }
 
 /* HERO: "Works with" tool logos, slow marquee along the bottom */
