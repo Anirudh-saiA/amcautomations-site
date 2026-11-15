@@ -844,10 +844,10 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; heig
   .sp-mhead { position: absolute; inset: 0; display: grid; align-content: center; justify-items: center; gap: 18px; padding: 32px 22px; text-align: center; }
   .sp-mhead h2 { font-size: clamp(30px, 8.4vw, 46px); line-height: 1.04; letter-spacing: -0.03em; max-width: 14ch; }
 }
-@media (prefers-reduced-motion: reduce) {
+@media (max-width: 860px), (prefers-reduced-motion: reduce) {
   .sp-mband { height: auto; min-height: 0; }
   .sp-mband .sp-half { display: none; }
-  .sp-mhead { position: static; padding: 72px 22px 8px; }
+  .sp-mhead { position: static; padding: 56px 22px 4px; gap: 12px; }
 }
 
 /* shorts window */
@@ -1517,3 +1517,12 @@ html.lenis, html.lenis body { height: auto; }
 .dcard-qr div { width: 148px; height: 148px; }
 .dcard-qr svg { width: 100%; height: 100%; display: block; }
 .dcard-qr small { font: 500 10px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--black-4); }
+
+/* phones: tighter footer, link lists side by side (kept last so it wins) */
+@media (max-width: 560px) {
+  .footer { padding: 40px 20px 32px; }
+  .footer-in { grid-template-columns: 1fr 1fr; gap: 20px 16px; }
+  .footer-in > :first-child, .footer-contact { grid-column: 1 / -1; }
+  .footer a { padding: 6px 0; min-height: 44px; display: flex; align-items: center; }
+  .footer nav, .footer-contact { gap: 0; }
+}

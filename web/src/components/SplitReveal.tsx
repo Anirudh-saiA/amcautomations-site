@@ -37,19 +37,7 @@ export default function SplitReveal({
       tl.to({}, { duration: 0.7 }) /* hold on the revealed content */
     })
 
-    mm.add('(max-width: 860px) and (prefers-reduced-motion: no-preference)', () => {
-      const tl = gsap.timeline({
-        defaults: { ease: 'none' },
-        scrollTrigger: { trigger: q('.sp-mband')[0], start: 'top top', end: '+=85%', scrub: 0.5, pin: true, anticipatePin: 1 },
-      })
-      gsap.set(q('.sp-mhead'), { scale: 0.9, opacity: 0.2 })
-      tl.to(q('.sp-mband .sp-half.top'), { yPercent: -100, duration: 1, ease: 'power3.inOut' }, 0.2)
-      tl.to(q('.sp-mband .sp-half.bot'), { yPercent: 100, duration: 1, ease: 'power3.inOut' }, 0.2)
-      tl.to(q('.sp-mhead'), { scale: 1, opacity: 1, duration: 0.8, ease: 'power2.out' }, 0.3)
-      tl.set(q('.sp-mband .sp-half'), { autoAlpha: 1 }, 1.2)
-      tl.set(q('.sp-mband .sp-half'), { autoAlpha: 0 }, 1.21)
-      tl.to({}, { duration: 0.35 })
-    })
+    /* phones: no pinned band. The title simply sits above the content, so there is no empty scrolling. */
     return () => mm.revert()
   }, [])
 
