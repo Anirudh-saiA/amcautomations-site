@@ -1526,3 +1526,10 @@ html.lenis, html.lenis body { height: auto; }
   .footer a { padding: 6px 0; min-height: 44px; display: flex; align-items: center; }
   .footer nav, .footer-contact { gap: 0; }
 }
+
+/* tool logos: no tile behind them, each in its own brand colour */
+.tech i:has(s), .tech.orange i:has(s), .tech.green i:has(s), .tech.blue i:has(s) { background: transparent; }
+.tech i s { width: 30px; height: 30px; background: var(--brand, var(--black-3)); }
+@media (max-width: 640px) { .tech i s { width: 26px; height: 26px; } }
+.tech i s[style*="woocommerce"] { width: 50px; height: 32px; }
+@media (max-width: 640px) { .tech i s[style*="woocommerce"] { width: 44px; height: 28px; } }

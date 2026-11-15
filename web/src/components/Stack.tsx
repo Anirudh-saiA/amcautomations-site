@@ -8,7 +8,7 @@ export default function Stack() {
       <div className="marq-track">
         {[...items, ...items].map((t, i) => (
           <span className={`tech ${t.tone}`} key={`${t.n}-${i}`} aria-hidden={i >= items.length ? true : undefined}>
-            <i>{t.f ? <s style={{ ['--logo' as string]: `url(/assets/logos/${t.f}.svg)` }} /> : t.n.slice(0, 2)}</i>
+            <i>{t.f ? <s style={{ ['--logo' as string]: `url(/assets/logos/${t.f}.svg)`, ['--brand' as string]: t.c }} /> : t.n.slice(0, 2)}</i>
             <b>{t.n}</b>
             <small>{t.k}</small>
           </span>
