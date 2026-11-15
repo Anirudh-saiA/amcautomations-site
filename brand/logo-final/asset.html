@@ -1,0 +1,44 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=JetBrains+Mono:wght@500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{width:100%;height:100%;background:transparent;overflow:hidden}
+body{display:flex;align-items:center;justify-content:center;font-family:'Inter Tight',sans-serif}
+.light{--fg:#1E1C18;--line:#1E1C18}.dark{--fg:#FFFFFF;--line:#FAF7F2}
+.bgL{background:#FAF7F2}.bgD{background:#1E1C18}
+.lock{display:flex;align-items:center;color:var(--fg)}
+.lock.stack{flex-direction:column;text-align:center}
+.name{font-weight:800;letter-spacing:-.03em;line-height:1}
+.tag{font:500 1em 'JetBrains Mono',monospace;letter-spacing:.2em;text-transform:uppercase;opacity:.7;white-space:nowrap}
+.sub{font:400 1em Inter,sans-serif;opacity:.75}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><symbol id="mk" viewBox="0 0 64 64"><path d="M11 47 L32 17 L53 47" fill="none" stroke="var(--line,#1E1C18)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="47" r="8.5" fill="var(--b,#3B74EE)"/><circle cx="32" cy="17" r="8.5" fill="var(--o,#EE7A2E)"/><circle cx="53" cy="47" r="8.5" fill="var(--g,#1F9D57)"/></symbol></svg>
+<div id="root"></div>
+<script>
+const n=location.hash.slice(1);
+const mark=(s)=>`<svg width="${s}" height="${s}"><use href="#mk"/></svg>`;
+const h=(theme,H,tag)=>`<div class="lock ${theme}" style="gap:${H*.28}px">${mark(H)}<div style="display:flex;flex-direction:column;gap:${H*.12}px"><span class="name" style="font-size:${H*.5}px">AMC Automations</span>${tag?`<span class="tag" style="font-size:${H*.13}px">AI · Media · Commerce</span>`:''}</div></div>`;
+const st=(theme,S,tag)=>`<div class="lock stack ${theme}" style="gap:${S*.1}px">${mark(S*.42)}<span class="name" style="font-size:${S*.11}px">AMC Automations</span>${tag?`<span class="tag" style="font-size:${S*.028}px">AI · Media · Commerce</span>`:''}</div>`;
+const sq=(theme,bg,S,f)=>`<div class="${theme} ${bg}" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center">${mark(S*f)}</div>`;
+const L={
+ 'lockup-h-light':h('light',240,false),
+ 'lockup-h-dark':h('dark',240,false),
+ 'lockup-h-tagline-light':h('light',240,true),
+ 'lockup-h-tagline-dark':h('dark',240,true),
+ 'lockup-stacked-light':st('light',1000,false),
+ 'lockup-stacked-dark':st('dark',1000,false),
+ 'email-signature':h('light',110,false),
+ 'watermark-white':`<div class="lock dark" style="--fg:#fff;--line:#fff;--b:#fff;--o:#fff;--g:#fff;gap:20px">${mark(80)}<span class="name" style="font-size:40px">AMC Automations</span></div>`,
+ 'icon-512-light':sq('light','bgL',512,.62),
+ 'icon-512-dark':sq('dark','bgD',512,.62),
+ 'apple-touch-180':sq('light','bgL',180,.66),
+ 'avatar-1080':sq('dark','bgD',1080,.6),
+ 'favicon-32':`<div class="light" style="width:100%;height:100%;display:flex">${mark(32)}</div>`,
+ 'icon-white-1080':`<div class="light" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#FFFFFF">${mark(1080*.62)}</div>`,
+ 'banner-white-1920x1080':`<div class="light" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#FFFFFF">${h('light',250,true)}</div>`,
+ 'banner-white-wide-1584x396':`<div class="light" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#FFFFFF">${h('light',150,true)}</div>`,
+ 'og-1200x630':`<div class="dark bgD" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px">${h('dark',130,false)}<span class="sub" style="font-size:34px;color:#fff;margin-top:6px">Busywork, on autopilot.</span></div>`,
+ 'linkedin-banner-1584x396':`<div class="dark bgD" style="width:100%;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 110px">${h('dark',120,false)}<span class="sub" style="font-size:30px;color:#fff;text-align:right">Busywork, on autopilot.<br><span style="opacity:.7">amcautomations.in</span></span></div>`
+};
+document.getElementById('root').outerHTML=(['favicon-32'].includes(n)?L[n]:L[n]);
+</script></body></html>
