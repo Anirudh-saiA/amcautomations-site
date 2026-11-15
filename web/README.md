@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AMC Automations website
 
-## Getting Started
+Marketing site for AMC Automations (AI · Media · Commerce), live at https://amcautomations.in.
+Built with Next.js (App Router), GSAP, and a 3D hero in React Three Fiber.
 
-First, run the development server:
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Pages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Route | What it is |
+|---|---|
+| `/` | Home |
+| `/ai-content-studio` | Product: long video to finished vertical Shorts |
+| `/ai-commerce-operations` | Product: WhatsApp updates, COD confirmation, CRM sync, refunds |
+| `/about` | Team, FAQ, name disambiguation |
+| `/contact` | WhatsApp and email |
+| `/privacy` | Privacy |
+| `/card/[who]` | Digital business cards (not indexed) |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Where things live
 
-## Learn More
+- `src/lib/content.ts`: site copy, tools list, stats, FAQ.
+- `src/lib/people.ts`: founders and card details.
+- `src/components/Chrome.tsx`: nav and footer. The footer is marked `data-nosnippet` so Google does not use it as a search snippet.
+- `src/app/globals.css`: all styles. Palette v1 only (black, beige, blue, orange, green).
+- `src/app/layout.tsx`: site-wide metadata and JSON-LD. `SAME_AS` holds social profile links (LinkedIn, Instagram, YouTube, Google Business Profile). Add them as they exist.
+- `src/app/robots.ts`, `src/app/sitemap.ts`, `public/llms.txt`: search and AI crawler files. `/api/`, `/systems`, `/youtube` and `/card/` are not crawled.
+- `src/app/opengraph-image.tsx`: share image.
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Pushing to `main` on GitHub deploys to Vercel automatically.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Check before pushing
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Test at 375px and 320px wide for sideways scroll, and run `npm run build`.
