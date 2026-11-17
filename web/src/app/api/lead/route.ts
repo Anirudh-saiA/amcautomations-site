@@ -21,7 +21,11 @@ export async function POST(req: Request) {
   /* only accept posts that come from this site */
   const origin = req.headers.get('origin')
   const host = req.headers.get('host')
-  if (origin && host && new URL(origin).host !== host) return NextResponse.json({ ok: false }, { status: 403 })
+  /* browsers always send Origin on a POST, so a missing or foreign one is not our form */
+  let originHost = ''
+  try { originHost = origin ? new URL(origin).host : '' } catch { /* bad origin */ }
+  if (!originHost || !host || originHost !== host) return NextResponse.json({ ok: false }, { status: 403 })
+  if (!(req.headers.get('content-type') ?? '').includes('application/json')) return NextResponse.json({ ok: false }, { status: 415 })
   const ip = (req.headers.get('x-forwarded-for') ?? 'unknown').split(',')[0].trim()
   if (limited(ip)) return NextResponse.json({ ok: false }, { status: 429 })
   const len = Number(req.headers.get('content-length') ?? 0)
@@ -35,7 +39,8 @@ export async function POST(req: Request) {
   }
   /* hidden field real people never fill: pretend success so bots move on */
   if (data.website) return NextResponse.json({ ok: true })
-  const clean = (v: unknown) => String(v ?? '').slice(0, 2000)
+  /* trim, cap the length and drop control characters so nothing odd reaches the table or the email */
+  const clean = (v: unknown) => String(v ?? '').replace(/\p{Cc}/gu, ' ').trim().slice(0, 2000)
   /* same columns the static site wrote to the `leads` table */
   const row = {
     kind: 'brief',
@@ -44,7 +49,7 @@ export async function POST(req: Request) {
     contact: clean(data.contact) || null,
     page: clean(data.page).slice(0, 300) || null,
   }
-  if (!row.contact || !row.job) return NextResponse.json({ ok: false }, { status: 422 })
+  if (!row.contact || !row.job || row.contact.length > 200) return NextResponse.json({ ok: false }, { status: 422 })
 
   const sb = fetch(`${SB}/rest/v1/leads`, {
     method: 'POST',
