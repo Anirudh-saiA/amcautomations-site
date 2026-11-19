@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import { autoplay } from '@/lib/autoplay'
 
 const WORKS_WITH = [
   { n: 'WhatsApp', f: 'whatsapp' }, { n: 'Claude', f: 'claude' }, { n: 'n8n', f: 'n8n' },
@@ -20,9 +21,7 @@ export default function Hero() {
     const v = vid.current
     if (!v || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     v.src = window.innerWidth <= 700 ? '/assets/clips/hero-bg-540.mp4' : '/assets/clips/hero-bg.mp4'
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause() }, { threshold: 0.05 })
-    io.observe(v)
-    return () => io.disconnect()
+    return autoplay(v)
   }, [])
 
   /* slow, smooth intro on every load: the city fades up, then the words arrive one after another */
