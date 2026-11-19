@@ -3,6 +3,8 @@ import { Inter, Inter_Tight, JetBrains_Mono } from 'next/font/google'
 import { Nav, Footer, Reveals } from '@/components/Chrome'
 import SmoothScroll from '@/components/SmoothScroll'
 import Analytics from '@/components/Analytics'
+import Clarity from '@/components/Clarity'
+import WhatsAppFloat from '@/components/WhatsAppFloat'
 import fs from 'node:fs'
 import path from 'node:path'
 import './globals.css'
@@ -81,6 +83,8 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         <Reveals />
         <SmoothScroll />
         <Analytics />
+        <Clarity />
+        <WhatsAppFloat />
       </body>
     </html>
   )

@@ -1537,3 +1537,9 @@ html.lenis, html.lenis body { height: auto; }
 /* more tools in the strip: keep the same reading speed */
 .marq-track { animation-duration: 130s; }
 .marq-row.rev .marq-track { animation-duration: 150s; }
+
+/* floating WhatsApp button */
+.wa-float { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); z-index: 40; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--green-4); color: #fff; box-shadow: 0 10px 28px -8px rgba(14, 82, 41, .55); transition: transform .2s ease, background .2s ease; }
+.wa-float:hover { transform: translateY(-2px) scale(1.04); background: var(--green-5); }
+.wa-float:focus-visible { outline: 3px solid var(--orange-2); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .wa-float { transition: none; } }

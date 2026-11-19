@@ -60,7 +60,7 @@ export async function POST(req: Request) {
   const mail = fetch(FORMSUBMIT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({ _subject: 'amc.automations: sv', _template: 'table', _captcha: 'false', _cc: 'anirudh@amcautomations.in', ...row }),
+    body: JSON.stringify({ _subject: `New brief from the website${row.page ? ' (' + row.page + ')' : ''}`, _template: 'table', _captcha: 'false', _cc: 'anirudh@amcautomations.in', ...row }),
   }).then((r) => r.ok).catch(() => false)
 
   const [a, b] = await Promise.all([sb, mail])
